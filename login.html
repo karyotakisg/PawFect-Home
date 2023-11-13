@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-image: url('doukakos.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        header {
+            background-color: #fff;
+            color: #49392d;
+            padding: 7px 0;
+        }
+
+        nav {
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .navbar-brand img {
+            width: 5rem; 
+            height: auto;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #49392d;
+        }
+
+        .user-actions a {
+            margin-left: 20px;
+            border: 1px solid #49392d;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #49392d;
+            text-decoration: none;
+        }
+
+        .form-control {
+            border-radius: 1rem;
+        }
+        .jumbotron {
+            font-family: 'Quicksand', sans-serif;
+            background-color: rgba(138, 198, 209, 0.7); /* Adjust the background color's opacity */
+            padding: 20px;
+            background-image: url('https://i.postimg.cc/d07CgtCG/Untitled-design-3.png'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #E8E2DD; /* Adjust the background color's opacity */
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 80px;
+        }
+
+        footer {
+            background-color: #fff;
+            color: hsl(26, 24%, 23%);
+            padding: 20px 20px;
+            padding-bottom: 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .footer-logo img {
+            width: 5rem; 
+            height: auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+        }
+    </style>
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="index.html">
+            <img src="https://i.postimg.cc/WpX4Bzwv/Brown-One-Line-Pet-Sitting-Logo-2.png" alt="Pawfect Home Logo">
+        </a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="findapet.html">Find a Pet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="listapet.html">List Your Pet</a>
+                </li>
+            </ul>
+        </div>
+    
+        <div class="user-actions">
+            <a class="nav-link" href="login.html">Login</a>
+            <a class="nav-link" href="register.html">Register</a>
+        </div>
+    </nav>
+</header>
+<body>
+    <div class="jumbotron text-center">
+        <h2>It's good to have you back</h2>
+        <p>Time to find the perfect home for our little buddies!</p>
+    </div>
+
+    <div class="container text-center">
+        <h2>Login</h2>
+        <form>
+            <div class="form-group text-left">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter your username">
+            </div>
+            <div class="form-group text-left">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+            
+        </form>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://i.postimg.cc/WpX4Bzwv/Brown-One-Line-Pet-Sitting-Logo-2.png" alt="Pawfect Home Logo"> <!-- Replace 'your-logo.png' with your logo image -->
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2023 Pawfect Home</p>
+                <p><a href="#privacy-policy">Privacy Policy</a> | <a href="#terms-of-service">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

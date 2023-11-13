@@ -1,0 +1,195 @@
+/* HOME */
+
+
+/* General Styles */
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EEE9E5;
+}
+
+/* Navigation Bar Styles */
+header {
+    background-color: #fff;
+    color: #49392d;
+    padding: 7px 0;
+}
+
+nav {
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.navbar-brand img {
+    width: 5rem; 
+    height: auto;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #49392d;
+}
+
+.user-actions a {
+    margin-left: 20px;
+    border: 1px solid #49392d;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #49392d;
+    text-decoration: none;
+}
+
+/* Welcome Section Styles */
+.welcome-section {
+    background-color: #fff;
+    padding: 80px 0;
+    text-align: left;
+    padding-left: 17%;
+    color: #fff;
+    background-image: url("https://i.postimg.cc/bNkvVgrZ/1.png"); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+.welcome-text {
+    font-family: 'Quicksand', sans-serif;
+    color: #49392d;
+}
+
+/* About Us Section Styles */
+.about-section {
+    background-color: #EEE9E5;
+    padding: 60px 0;
+    text-align: center;
+    background-image: url('https://i.postimg.cc/nz3qhQWt/Untitled-design-1.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    padding: 60px 0;
+    text-align: center;
+    }
+
+.about-content {
+    font-family: 'Quicksand', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #49392d;
+    }
+
+/* Footer Styles */
+footer {
+    background-color: #fff;
+    color: hsl(26, 24%, 23%);
+    padding: 30px 20px;
+    padding-bottom: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.footer-logo img {
+    width: 4rem; 
+    height: auto;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+}
+
+
+/*LIST A PET*/
+
+.form-control {
+    border-radius: 1rem; /* Adjust the radius as needed to control the roundness of the corners. */
+}
+header {
+    background-color: #fff;
+    color: #49392d;
+    padding: 7px 0;
+    }
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    }
+
+.logo img {
+    height: 86px; /* Adjust the height as needed to fit within the navigation bar */
+    width: auto; /* Let the width adjust proportionally based on the image's aspect ratio */
+    margin-right: 50px; /* Adjust the spacing between the logo and text */
+    margin-left: 60px;
+    }
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    }
+
+ul li a {
+    text-decoration: none;
+    color: #49392d;
+    }
+
+.user-actions a {
+    margin-left: 20px;
+    border: 1px solid #49392d;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #49392d;
+    text-decoration: none;
+    }
+    footer {
+        background-color: #fff;
+        color: hsl(26, 24%, 23%);
+        padding: 20px 20px;
+        padding-bottom: 20px;
+      }
+      
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+      }
+    
+    .footer-logo img {
+        width: 5rem; 
+        height: auto;
+      }
+    
+    .footer-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center vertically */
+        justify-content: center; /* Center horizontally */
+    }
+    
+    #containerforlisting{
+        margin-bottom: 2em;
+    }
+    #bodylisting{
+        background-color: #EEE9E5; /* Light nude background color */
+    }
+
+
