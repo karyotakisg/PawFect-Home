@@ -1,3 +1,5 @@
+package pawfect_home;
+
 public class User   {
     
     private String firstname ;
