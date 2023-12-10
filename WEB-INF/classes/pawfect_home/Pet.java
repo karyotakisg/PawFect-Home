@@ -2,7 +2,6 @@ package pawfect_home;
 
 public class Pet {
 
-
     private String pet_name;
     private String kind_of_pet;
     private String breed;
@@ -14,7 +13,7 @@ public class Pet {
         this.breed = breed;
         this.pet_size = pet_size;
     }
-    
+
 
     public void setPet_name(String pet_name) {
         this.pet_name = pet_name;
@@ -45,7 +44,7 @@ public class Pet {
     }
     public int getPet_size() {
         return pet_size;
-    }  
+    }
 
-    
+
 }

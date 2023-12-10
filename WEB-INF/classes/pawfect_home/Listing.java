@@ -10,8 +10,7 @@ public class Listing{
     private java.sql.Date end_date;
     private int price;
     private String description;
-
-    private Pet pet;
+    Pet pet;
 
     public Listing(java.sql.Date upload_date, boolean stay_at_owner, java.sql.Date start_date, java.sql.Date end_date, int price, String description, Pet pet) {
         this.upload_date = upload_date;
@@ -63,7 +62,6 @@ public class Listing{
         return price;
     }
 
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -71,22 +69,6 @@ public class Listing{
         return description;
     }
 
-    
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public void setPet(Pet pet) { this.pet = pet; }
+    public Pet getPet() { return pet; }
 }

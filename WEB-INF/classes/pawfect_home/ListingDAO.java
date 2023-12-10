@@ -6,12 +6,11 @@ import java.util.List;
 
 public class ListingDAO {
 
-    private Pet pet;
-    private Listing newList;
+    Listing newList;
 
-    public void createListing(Listing newList, Pet pet) throws SQLException, Exception {
+    public void createListing(Listing newList) throws SQLException, Exception {
 
-        String insertUserQuery = "INSERT INTO activeListings (upload_date, stay_at_owner, start_date, end_date, price, description, pet_name, kind_of_pet, breed, pet_size) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertUserQuery = "INSERT INTO activeListings (upload_date, stay_at_owner, start_date, end_date, price, description, pet_name, kind_of_pet, breed, pet_size, Pet pet) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://195.251.249.131:3306/ismgroup10", "ismgroup10", "stmj63");
              PreparedStatement insertUserStmt = connection.prepareStatement(insertUserQuery)) {
@@ -24,10 +23,10 @@ public class ListingDAO {
             insertUserStmt.setInt(5, newList.getPrice());
             insertUserStmt.setString(6, newList.getDescription());
 
-            insertUserStmt.setString(7, pet.getPet_name());
-            insertUserStmt.setString(8, pet.getKind_of_pet());
-            insertUserStmt.setString(9, pet.getBreed());
-            insertUserStmt.setInt(10, pet.getPet_size());
+            insertUserStmt.setString(7, newList.getPet().getPet_name());
+            insertUserStmt.setString(8, newList.getPet().getKind_of_pet());
+            insertUserStmt.setString(9, newList.getPet().getBreed());
+            insertUserStmt.setInt(10, newList.getPet().getPet_size());
 
 
             int rowsAffected = insertUserStmt.executeUpdate();
@@ -62,7 +61,6 @@ public class ListingDAO {
                 java.sql.Date end_date = resultSet.getDate("end date");
                 int price = resultSet.getInt("price");
                 String description = resultSet.getString("description");
-
                 //Retrieve pet-related information
                 String pet_name = resultSet.getString("pet name");
                 String kind_of_pet = resultSet.getString("kind of pet");
