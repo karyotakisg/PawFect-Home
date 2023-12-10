@@ -98,9 +98,9 @@
                                             required>
                                     </div>
                                     <div class="form-group col-md-5">
-                                        <label for="price">Reward</label>
-                                        <div class="input-group" name="price">
-                                            <input type="number"
+                                        <label >Reward</label>
+                                        <div class="input-group" >
+                                            <input type="number" name="price"
                                                 class="form-control">
                                             <span class="input-group-text">€</span>
                                             <div class="input-group-append">
@@ -158,6 +158,7 @@
                     format: 'yyyy-mm-dd',
                     autoclose: true
                 });
+                
             </script>
 
     </body>
