@@ -63,14 +63,14 @@
                                     <div class="form-group col-md-5">
                                         <label for="petName">Pet Name</label>
                                         <input type="text" class="form-control"
-                                            id="petName"
+                                            id="petName"  name="petName"
                                             placeholder="Enter Pet Name"
                                             required>
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label for="petType">Animal</label>
                                         <input type="text" class="form-control"
-                                            id="petType" placeholder="e.g. Cat"
+                                            id="petType" placeholder="e.g. Cat" name="animal"
                                             required>
                                     </div>
                                 </div>
@@ -78,13 +78,13 @@
                                     <div class="form-group col-md-5">
                                         <label for="petBreed">Breed (optional)</label>
                                         <input type="text" class="form-control"
-                                            id="petBreed"
+                                            id="petBreed" name="breed"
                                             placeholder="Enter Breed">
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label for="petSize">Size</label>
                                         <input type="text" class="form-control"
-                                            id="petSize"
+                                            id="petSize" name="petSize"
                                             placeholder="Enter Size">
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
                                 <div class="form-row justify-content-between">
                                     <div class="form-group">
                                         <label for="petImage">Picture</label>
-                                        <input type="file"
+                                        <input type="file" name="img"
                                             class="form-control-file"
                                             id="petImage" accept="image/*"
                                             required>
