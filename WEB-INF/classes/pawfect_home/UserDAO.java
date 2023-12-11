@@ -97,7 +97,7 @@ public class UserDAO    {
             }
 
             // case valid credentials
-            User user = new User(rs.getString("firstname"),
+            User user = new User(rs.getString("first_name"),
                         rs.getString("surname"),
                         rs.getString("email"),
                         rs.getLong("phone"),
