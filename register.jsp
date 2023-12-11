@@ -58,14 +58,14 @@
             <div class="form-row">
                 <div class="col">
                     <div class="form-group text-left">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+                        <label for="name">firstname</label>
+                        <input type="text" class="form-control" id="name" name="firstname" placeholder="Enter your first name" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group text-left">
                         <label for="surname">Surname</label>
-                        <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter your surname">
+                        <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter your surname" required>
                     </div>
                 </div>
             </div>
@@ -73,13 +73,13 @@
                 <div class="col">
                     <div class="form-group text-left">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Choose a username">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Choose a username" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group text-left">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Create a password">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" required>
                     </div>
                 </div>
             </div>
@@ -87,13 +87,13 @@
                 <div class="col">
                     <div class="form-group text-left">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group text-left">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" class="form-control" id="phone" name="phone"placeholder="Enter your phone number">
+                        <input type="tel" class="form-control" id="phone" name="phone"placeholder="Enter your phone number" required>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                 <div class="col">
                     <div class="form-group text-left">
                         <label for="location">Location</label>
-                        <input type="text" class="form-control" id="location" name="location" placeholder="Enter your location">
+                        <input type="text" class="form-control" id="location" name="location" placeholder="Enter your location" required>
                     </div>
                 </div>
                 

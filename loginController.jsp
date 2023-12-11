@@ -11,7 +11,7 @@ try {
     /*
     * Store user object to session via an attribute
     */
-    session.setAttribute("userObj2023", user);
+    session.setAttribute("userCookie", user);
 
     /*
     * We can safely redirect authenticated user to dashboard
