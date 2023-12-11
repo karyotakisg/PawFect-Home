@@ -155,11 +155,11 @@
          action="loginController.jsp">
             <div class="form-group text-left">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
             </div>
             <div class="form-group text-left">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Sign in</button>
