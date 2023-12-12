@@ -56,11 +56,6 @@
         <p>Are you ready to embark on your pet-sitting journey?</p>
     </div>
 
-    
-
-   
-    
-
     <div class="container text-center">
         <% if(request.getAttribute("message") != null) { %>		
             <div class="alert alert-danger text-center" role="alert"

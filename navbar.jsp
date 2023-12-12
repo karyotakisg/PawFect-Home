@@ -32,7 +32,7 @@
             <a class="nav-link" href="login.jsp">Login</a>
             <a class="nav-link" href="register.jsp">Register</a>
         </div>
-    <%} else {%>
+    <% } else {%>
     </ul>
     <div class="nav navbar-nav navbar-right">
         <li>
