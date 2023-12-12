@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List, java.util.ArrayList" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,11 +53,24 @@
     <% if(request.getAttribute("message") != null) { %>		
         <div class="alert alert-danger text-center" role="alert"><%=(String)request.getAttribute("message") %></div>
     <% } %>
-    
+
+    <%
+    List<String> errorMessage = (List<String>) request.getAttribute("errorMessage");
+    %>
+    <% if (errorMessage != null && !errorMessage.isEmpty()) { %>
+    <div class="alert alert-danger text-center" role="alert">
+        <dl class="text-center">
+            <% for (String error : errorMessage) { %>
+              <dt><%= error %></li>
+            <% } %>
+        </dl>
+    </div>
+    <% } %>
+
     <div class="container text-center">
         <h2>Register</h2>
         <form id="form" name="form" method="POST"
-        action="registerController.jsp">>
+        action="registerController.jsp">
             <div class="form-row">
                 <div class="col">
                     <div class="form-group text-left">

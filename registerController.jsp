@@ -9,9 +9,11 @@ String firstname = request.getParameter("firstname");
 String surname = request.getParameter("surname");
 String location = request.getParameter("location");
 String email = request.getParameter("email");
-long phone = request.getParameter("phone");
+String number = request.getParameter("phone");
+long phone = Long.parseLong(number);
 List<String> errors = new ArrayList<String>();
 boolean hasErrors = false;
+String messageofErrors;
 
 if (firstname == null || firstname.length() < 3) {
     hasErrors = true;
@@ -33,7 +35,7 @@ if (password == null || password.length() < 4) {
     errors.add("Password must be at least 4 characters long");
 }
 
-if (phone == null || password.length() != 10) {
+if (number.length() != 10) {
     hasErrors = true;
     errors.add("Number phone must be 10 number long");
 }
@@ -41,11 +43,11 @@ if (phone == null || password.length() != 10) {
 
 
     <%
-    if (hasErrors) {
+    if (!errors.isEmpty()) {
+
+        request.setAttribute("errorMessage", errors);
      %>
-     request.setAttribute("hasErrors", (String) e.getMessage());
-     %>
-    <jsp:forward page="login.jsp" />
+    <jsp:forward page="register.jsp" />
     <%
     } else {
         try {
@@ -55,15 +57,19 @@ if (phone == null || password.length() != 10) {
 
             session.setAttribute("userCookie",user);
 
+            response.sendRedirect("homepage.jsp");
+
         }catch (Exception e) {
     
 
             request.setAttribute("message", (String) e.getMessage()); 
             %>
-            <jsp:forward page="login.jsp" />
+            <jsp:forward page="register.jsp" />
             <%
 
         }
+        response.sendRedirect("homepage.jsp");
+
     }
 %>
     
