@@ -17,7 +17,7 @@ try {
     * We can safely redirect authenticated user to dashboard
     * We could use also JSP forward action. 
     */
-    response.sendRedirect("homepage.jsp");
+    response.sendRedirect("index.jsp");
 
 } catch (Exception e) {
     request.setAttribute("message", (String) e.getMessage());

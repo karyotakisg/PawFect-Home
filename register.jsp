@@ -50,24 +50,32 @@
         <p>Are you ready to embark on your pet-sitting journey?</p>
     </div>
 
-    <% if(request.getAttribute("message") != null) { %>		
-        <div class="alert alert-danger text-center" role="alert"><%=(String)request.getAttribute("message") %></div>
-    <% } %>
+    
 
-    <%
-    List<String> errorMessage = (List<String>) request.getAttribute("errorMessage");
-    %>
-    <% if (errorMessage != null && !errorMessage.isEmpty()) { %>
-    <div class="alert alert-danger text-center" role="alert">
-        <dl class="text-center">
-            <% for (String error : errorMessage) { %>
-              <dt><%= error %></li>
-            <% } %>
-        </dl>
-    </div>
-    <% } %>
+   
+    
 
     <div class="container text-center">
+        <% if(request.getAttribute("message") != null) { %>		
+            <div class="alert alert-danger text-center" role="alert"
+            style="background-color: #ffcccc; border-radius: 1rem;">
+                <%=(String)request.getAttribute("message") %></div>
+        <% } %>
+
+        <%
+        List<String> errorMessage = (List<String>) request.getAttribute("errorMessage");
+        %>
+        <% if (errorMessage != null && !errorMessage.isEmpty()) { %>
+            <div class="alert alert-danger text-center" role="alert"
+            style="background-color: #ffcccc; border-radius: 1rem;">
+                <dl class="text-center">
+                    <% for (String error : errorMessage) { %>
+                      <li><%= error %></li>
+                    <% } %>
+                    </dl>
+            </div>
+            <% } %>
+
         <h2>Register</h2>
         <form id="form" name="form" method="POST"
         action="registerController.jsp">

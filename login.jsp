@@ -70,13 +70,17 @@
             background-position: center; 
             background-repeat: no-repeat;
         }
-
+        #test{
+        
+        }
         .container {
             font-family: 'Quicksand', sans-serif;
             background-color: #E8E2DD; /* Adjust the background color's opacity */
             padding: 40px;
             border-radius: 15px;
             margin-top: 80px;
+        
+            
         }
 
         footer {
@@ -145,11 +149,15 @@
         <p>Time to find the perfect home for our little buddies!</p>
     </div>
 
-    <% if(request.getAttribute("message") != null) { %>		
-        <div class="alert alert-danger text-center" role="alert"><%=(String)request.getAttribute("message") %></div>
-    <% } %>
-
+    
     <div class="container text-center">
+        <% if(request.getAttribute("message") != null) { %>	
+            
+                    <div class="alert alert-danger text-center" role="alert" style="background-color: #ffcccc; border-radius: 1rem;">
+                        <%=(String)request.getAttribute("message") %></div>
+                <% } %>
+            
+        
         <h2>Login</h2>
         <form id="form" name="form" method="POST"
          action="loginController.jsp">

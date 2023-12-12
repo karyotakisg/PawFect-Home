@@ -57,7 +57,7 @@ if (number.length() != 10) {
 
             session.setAttribute("userCookie",user);
 
-            response.sendRedirect("homepage.jsp");
+            response.sendRedirect("index.jsp");
 
         }catch (Exception e) {
     
@@ -68,7 +68,6 @@ if (number.length() != 10) {
             <%
 
         }
-        response.sendRedirect("homepage.jsp");
 
     }
 %>
