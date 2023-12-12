@@ -1,4 +1,4 @@
-<footer style="bottom: 0; left: 0; right: 0;">
+<footer style="bottom: 0;">
             <div class="footer-content">
                 <div class="footer-logo">
                     <img src="https://i.postimg.cc/WpX4Bzwv/Brown-One-Line-Pet-Sitting-Logo-2.png" alt="Pawfect Home Logo"> <!-- Replace 'your-logo.png' with your logo image -->

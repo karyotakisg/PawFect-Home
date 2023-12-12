@@ -64,11 +64,18 @@ ul li a {
 }
 
 footer {
+    /* Set the footer to stick to the bottom */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
     background-color: #fff;
     color: hsl(26, 24%, 23%);
     padding: 20px 20px;
     padding-bottom: 20px;
-  }
+}
+
   
   .footer-content {
     display: flex;

@@ -53,6 +53,14 @@
                     </nav>
                 </header>
                 <div class="container mt-5" id="containerforlisting">
+                <%
+                String parameterValue = request.getParameter("message");
+                if (parameterValue != null) {
+                    %>
+                    <div> testtttttttttt</div>
+                    <%
+                }
+                %>
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
                             <div class="card">
@@ -86,7 +94,7 @@
                                                 <label for="petSize">Size</label>
                                                 <input type="number" class="form-control"
                                                     id="petSize" name="petSize"
-                                                    placeholder="Enter Size">
+                                                    placeholder="Enter Size" required>
                                             </div>
                                         </div>
 

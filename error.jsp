@@ -51,30 +51,22 @@
                 </div>
             </nav>
         </header>
-        <div class="container theme-showcase" role="main">
 
-			
-
-			<!-- Page Title -->
-			<div class="page-header">
-				<h1>Oops something went wrong</h1>
-			</div>
-            
+		<div class="container theme-showcase" role="main">
+		    <div class="page-header">
+			    <h1>Oops something went wrong</h1>
+		    </div>
+        
             <div class="row">
-
-				<div class="col-xs-12">
-
-					<h2>Description</h2>
-
-					<% if(exception != null) { %>	                  	
-						<p><code><%=exception %></code></p>						
-					<% } %>		
-
-				</div>
-
-			</div> 
+			    <div class="col-xs-12">
+			    	<h2>Description</h2>
+			    	<% if(exception != null) { %>	                  	
+			    		<p><code><%=exception %></code></p>						
+			    	<% } %>		
+			    </div>
+            </div>
+		</div> 
 			
 		</div>
-		<!-- /container -->
         <%@ include file="footer.jsp" %>
         </body>
