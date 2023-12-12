@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page session="false" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,7 +108,7 @@
 </head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <a class="navbar-brand" href="index.jsp">
+        <a class="navbar-brand" href="index.html">
             <img src="https://i.postimg.cc/WpX4Bzwv/Brown-One-Line-Pet-Sitting-Logo-2.png" alt="Pawfect Home Logo">
         </a>
     
@@ -116,23 +119,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.jsp">Home</a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.jsp#about">About Us</a>
+                    <a class="nav-link" href="index.html#about">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="findapet.jsp">Find a Pet</a>
+                    <a class="nav-link" href="findapet.html">Find a Pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="listapet.jsp">List Your Pet</a>
+                    <a class="nav-link" href="listapet.html">List Your Pet</a>
                 </li>
             </ul>
         </div>
     
         <div class="user-actions">
-            <a class="nav-link" href="login.jsp">Login</a>
-            <a class="nav-link" href="register.jsp">Register</a>
+            <a class="nav-link" href="login.html">Login</a>
+            <a class="nav-link" href="register.html">Register</a>
         </div>
     </nav>
 </header>
@@ -142,19 +145,25 @@
         <p>Time to find the perfect home for our little buddies!</p>
     </div>
 
+    <% if(request.getAttribute("message") != null) { %>		
+        <div class="alert alert-danger text-center" role="alert"><%=(String)request.getAttribute("message") %></div>
+    <% } %>
+
     <div class="container text-center">
         <h2>Login</h2>
-        <form>
+        <form id="form" name="form" method="POST"
+         action="loginController.jsp">
             <div class="form-group text-left">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
             </div>
             <div class="form-group text-left">
                 <label for="password">Password</label>
-                <input type="text" class="form-control" id="password" placeholder="Enter your password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-            
+            <div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
         </form>
     </div>
     <footer>
