@@ -10,16 +10,16 @@ public class Listing{
     private java.sql.Date end_date;
     private int price;
     private String description;
-    Pet pet;
+    private String username;
 
-    public Listing(java.sql.Date upload_date, boolean stay_at_owner, java.sql.Date start_date, java.sql.Date end_date, int price, String description, Pet pet) {
+    public Listing(java.sql.Date upload_date, boolean stay_at_owner, java.sql.Date start_date, java.sql.Date end_date, int price, String description, String username) {
         this.upload_date = upload_date;
         this.stay_at_owner = stay_at_owner;
         this.start_date = start_date;
         this.end_date = end_date;
         this.price = price;
         this.description = description;
-        this.pet = pet;
+        this.username = username;
     }
 
 
@@ -69,6 +69,11 @@ public class Listing{
         return description;
     }
 
-    public void setPet(Pet pet) { this.pet = pet; }
-    public Pet getPet() { return pet; }
+    public void getUsername(String username){
+        this.username = username; 
+    }
+    
+    public String getUsername() { 
+        return username; 
+    }
 }
