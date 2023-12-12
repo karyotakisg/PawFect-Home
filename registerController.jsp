@@ -68,7 +68,6 @@ if (number.length() != 10) {
             <%
 
         }
-        response.sendRedirect("homepage.jsp");
 
     }
 %>
