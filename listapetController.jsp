@@ -22,6 +22,7 @@ String name = request.getParameter("petName");
 String animal = request.getParameter("animal");
 String breed = request.getParameter("breed");
 int size = Integer.parseInt(request.getParameter("petSize"));
+String username = session.getAttribute("userCookie");
 int f_key = 0;
 int comparison = startDate.compareTo(endDate);
 List<String> errorMessages = new ArrayList<String>();
@@ -40,12 +41,12 @@ if (errorMessages.size() > 0) {
     <jsp:forward page="listapet.jsp" />
     <%
 } else{
-    //Listing listing = new Listing(uploadDate, stayAtOwner, startDate, endDate, price, description, "jdouk");
-    //ListingDAO listingdao = new ListingDAO();
-    //f_key = listingdao.createListing(listing); 
-    //Pet pet = new Pet(name, animal, breed, size);
-    //PetDAO petdao = new PetDAO();
-    //petdao.createPet(pet, f_key);
+    Listing listing = new Listing(uploadDate, stayAtOwner, startDate, endDate, price, description, username);
+    ListingDAO listingdao = new ListingDAO();
+    f_key = listingdao.createListing(listing); 
+    Pet pet = new Pet(name, animal, breed, size);
+    PetDAO petdao = new PetDAO();
+    petdao.createPet(pet, f_key);
     %>
 
 	<meta http-equiv="refresh" content="4;url=index.jsp" />

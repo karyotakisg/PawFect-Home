@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
-<%@ page errorPage="error.jsp"%>
+<%@ page import="pawfect_home.*"%>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -56,6 +56,7 @@
                 <div class="container mt-5" id="containerforlisting">
                 <%
                 List<String> errorMessages = (List<String>) request.getAttribute("messages");
+                if( errorMessages != null){
                 %>
                 <div class="text-center alert alert-danger" role="alert" style="background-color: #ffcccc; border-radius: 1rem;">
                     <ol>
@@ -64,6 +65,15 @@
                         <% } %>
                     </ol>
                 </div>
+                <%
+                }
+                User user = (User) session.getAttribute("userCookie");
+                if(user == null){
+                    %>
+                    <div class="text-center alert alert-warning" role="alert" style=" border-radius: 1rem;">
+                    You must be registered to sumbit your listing!
+                    </div>
+                <% } %>
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
                             <div class="card">
@@ -148,10 +158,15 @@
                                                     id="description" rows="4" name="description"
                                                     placeholder="Write comments about your pet"></textarea>
                                             </div>
-
+                                    <% if(user!=null){ %>
                                             <button type="submit"
                                                 class="btn btn-primary">List
                                                 My Pet</button>
+                                    <% } else{ %>
+                                            <button type="submit"
+                                                class="btn btn-primary" disabled>List
+                                                My Pet</button>
+                                    <% } %>
                                         </form>
                                     </div>
                                 </div>
