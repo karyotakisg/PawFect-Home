@@ -138,7 +138,7 @@ public class UserDAO    {
 		Connection con = null;
 
 		//Define the SQL statement (to be executed)
-		String sql= "INSERT INTO users(firstname, lastname, email, phone, location,username,password) "
+		String sql= "INSERT INTO users(first_name, surname, email, phone, location, username ,password) "
                             + " VALUES (?, ?, ?, ?, ?, ?, ?);";
 
 		String checkIfExistsQuery = "SELECT * FROM users where username=? or email=?;";
