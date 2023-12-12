@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        dl {
+            list-style-type: none;
+            
+        }
+    </style>
 </head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
@@ -68,7 +74,7 @@
         <% if (errorMessage != null && !errorMessage.isEmpty()) { %>
             <div class="alert alert-danger text-center" role="alert"
             style="background-color: #ffcccc; border-radius: 1rem;">
-                <dl class="text-center">
+                <dl class="text-center" id="errorMessage">
                     <% for (String error : errorMessage) { %>
                       <li><%= error %></li>
                     <% } %>
