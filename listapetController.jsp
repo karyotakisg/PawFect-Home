@@ -32,81 +32,14 @@ if (price < 0) {
     errorMessages.add("Price must be bigger than zero");
 }
 if (name.length() <= 1) {
-    errorMessages.add("Name cannot be one letter");
+    errorMessages.add("Pet Name cannot be one letter");
 }
 if (errorMessages.size() > 0) { 
     request.setAttribute("messages", errorMessages);
     %>
     <jsp:forward page="listapet.jsp" />
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Pet Sharing Platform</title>
-        <!-- Include Bootstrap CSS -->
-        <link rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <!-- Include Bootstrap Datepicker CSS -->
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-        <link
-            href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="css/listapet.css">
-
-    </head>
-    <body id="bodylisting">
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                <a class="navbar-brand" href="index.jsp">
-                    <img src="https://i.postimg.cc/WpX4Bzwv/Brown-One-Line-Pet-Sitting-Logo-2.png" alt="Pawfect Home Logo">
-                </a>
-            
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                    
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.jsp">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.jsp#about">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="findapet.jsp">Find a Pet</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="listapet.jsp">List Your Pet</a>
-                        </li>
-                    </ul>
-                </div>
-            
-                <div class="user-actions">
-                    <a class="nav-link" href="login.jsp">Login</a>
-                    <a class="nav-link" href="register.jsp">Register</a>
-                </div>
-            </nav>
-        </header>
-        <body id="bodylisting">
-        <div class="container" role="main">
-            <div class="alert alert-danger" role="alert" style="background-color: white; border-radius: 1rem;">
-            <ol>
-            <%      
-                    for (String error : errorMessages) { %>
-                        <li><%= error %></li> 
-                    <% } %>
-            </ol>
-            </div>
-            <a href="listapet.jsp" class="btn btn-info">
-          <span class="glyphicon glyphicon-menu-left"></span> Back to the form
-        </a>
-        </div>
-        <%@ include file="footer.jsp" %>
-        </body>
-        
-<% }
-else{
+    <%
+} else{
     //Listing listing = new Listing(uploadDate, stayAtOwner, startDate, endDate, price, description, "jdouk");
     //ListingDAO listingdao = new ListingDAO();
     //f_key = listingdao.createListing(listing); 
@@ -160,7 +93,6 @@ else{
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
           
     </body>
-    
 <% } %>
 
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
+<%@ page errorPage="error.jsp"%>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -55,12 +56,14 @@
                 <div class="container mt-5" id="containerforlisting">
                 <%
                 List<String> errorMessages = (List<String>) request.getAttribute("messages");
-                for(error : errorMessages) {
-                    %>
-                    <div> testtttttttttt</div>
-                    <%
-                }
                 %>
+                <div class="text-center alert alert-danger" role="alert" style="background-color: #ffcccc; border-radius: 1rem;">
+                    <ol>
+                        <% for (String error : errorMessages) { %>
+                                <ul> <%= error %> </ul>
+                        <% } %>
+                    </ol>
+                </div>
                     <div class="row">
                         <div class="col-md-8 offset-md-2">
                             <div class="card">
@@ -73,7 +76,7 @@
                                                 <label for="petName">Pet Name</label>
                                                 <input type="text" class="form-control"
                                                     id="petName"  name="petName"
-                                                    placeholder="Enter Pet Name"
+                                                    placeholder="Enter Pet's Name"
                                                     required>
                                             </div>
                                             <div class="form-group col-md-5">
@@ -94,7 +97,7 @@
                                                 <label for="petSize">Size</label>
                                                 <input type="number" class="form-control"
                                                     id="petSize" name="petSize"
-                                                    placeholder="Enter Size" required>
+                                                    placeholder="The length of your pet" required>
                                             </div>
                                         </div>
 
