@@ -49,7 +49,7 @@
                                 <div class="card-body">
                                     <h2 class="card-title text-center">List Your Pet
                                         &#x2764;</h2>
-                                    <form action="listapetController.jsp" method="post">
+                                    <form action="listapetController.jsp" method="post" accept-charset="UTF-8">
                                         <div class="form-row justify-content-between">
                                             <div class="form-group col-md-5">
                                                 <label for="petName">Pet Name</label>

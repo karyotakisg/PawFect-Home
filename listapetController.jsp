@@ -4,9 +4,10 @@
 <%@ page import="java.text.SimpleDateFormat"%>  
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="java.util.*"%>
-<%@ page errorPage="error.jsp"%>
+<%@ page import="java.util.Base64" %>
 
 <%
+request.setCharacterEncoding("UTF-8");
 String stayHome = request.getParameter("stay_home");
 boolean stayAtOwner = true;
 if (stayHome == null){
@@ -24,6 +25,8 @@ String breed = request.getParameter("breed");
 int size = Integer.parseInt(request.getParameter("petSize"));
 User user = (User) session.getAttribute("userCookie");
 String username = user.getUsername();
+//String base64Image = request.getParameter("img");
+//byte[] imageBytes = Base64.getUrlDecoder().decode(base64Image);
 int f_key = 0;
 int comparison = startDate.compareTo(endDate);
 List<String> errorMessages = new ArrayList<String>();
@@ -74,6 +77,8 @@ if (errorMessages.size() > 0) {
 <body id="bodylisting">	
 
 	<div class="container theme-showcase" role="main">
+    <div><%=animal %></div>
+    <%-- <div> <%=imageBytes %> </div> --%>
         <div class="alert alert-success text-center centered" role="alert" style="background-color: white; border-radius: 1rem;">
         Your Listing has been submitted to the platform! 
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
