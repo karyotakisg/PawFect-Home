@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page errorPage="error.jsp"%>
+<%@ page import="java.util.*"%>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -54,8 +54,8 @@
                 </header>
                 <div class="container mt-5" id="containerforlisting">
                 <%
-                String parameterValue = request.getParameter("message");
-                if (parameterValue != null) {
+                List<String> errorMessages = (List<String>) request.getAttribute("messages");
+                for(error : errorMessages) {
                     %>
                     <div> testtttttttttt</div>
                     <%

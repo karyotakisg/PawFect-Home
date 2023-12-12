@@ -35,7 +35,7 @@ if (name.length() <= 1) {
     errorMessages.add("Name cannot be one letter");
 }
 if (errorMessages.size() > 0) { 
-    request.setAttribute("message",errorMessages);
+    request.setAttribute("messages", errorMessages);
     %>
     <jsp:forward page="listapet.jsp" />
     <html>
