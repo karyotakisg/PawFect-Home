@@ -105,7 +105,7 @@
 </head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.jsp">
             <img src="https://i.postimg.cc/WpX4Bzwv/Brown-One-Line-Pet-Sitting-Logo-2.png" alt="Pawfect Home Logo">
         </a>
     
@@ -116,23 +116,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="index.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#about">About Us</a>
+                    <a class="nav-link" href="index.jsp#about">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="findapet.html">Find a Pet</a>
+                    <a class="nav-link" href="findapet.jsp">Find a Pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="listapet.html">List Your Pet</a>
+                    <a class="nav-link" href="listapet.jsp">List Your Pet</a>
                 </li>
             </ul>
         </div>
     
         <div class="user-actions">
-            <a class="nav-link" href="login.html">Login</a>
-            <a class="nav-link" href="register.html">Register</a>
+            <a class="nav-link" href="login.jsp">Login</a>
+            <a class="nav-link" href="register.jsp">Register</a>
         </div>
     </nav>
 </header>
