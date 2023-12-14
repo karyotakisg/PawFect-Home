@@ -29,23 +29,7 @@
             </div>
         </section>
     </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="https://i.postimg.cc/WpX4Bzwv/Brown-One-Line-Pet-Sitting-Logo-2.png" alt="Pawfect Home Logo"> <!-- Replace 'your-logo.png' with your logo image -->
-            </div>
-            <div class="footer-info">
-                <p>&copy; 2023 Pawfect Home</p>
-                <p><a href="#privacy-policy">Privacy Policy</a> | <a href="#terms-of-service">Terms of Service</a></p>
-            </div>
-        </div>
-    </footer>
-    <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Bootstrap JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+<%@ include file="footer.jsp" %>  
 
 
 </body>

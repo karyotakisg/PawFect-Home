@@ -120,29 +120,26 @@
                                             <input type="checkbox" class="m_form-check-input" id="m_petAtHome" name="stay_home">
                                             <label class="m_form-check-label" for="m_petAtHome">I require the pet-sitter to stay at my home</label>
                                         </div>
-                                        <div class="form">
-                                            <div class="form-group">
-                                                <label for="description">Description</label>
-                                                <textarea class="form-control"
-                                                    id="description" rows="4" name="description"
-                                                    placeholder="Write comments about your pet"></textarea>
-                                            </div>
-                                    <% if(user!=null){ %>
-                                            <button type="submit"
-                                                class="btn btn-primary">List
-                                                My Pet</button>
-                                    <% } else{ %>
-                                            <button type="submit"
-                                                class="btn btn-primary" disabled>List
-                                                My Pet</button>
-                                    <% } %>
+                                <div class="form">
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control" id="description" rows="4" name="description" placeholder="Write comments about your pet"></textarea>
+                                </div>
+                                <% if (user != null) { %>
+                                <button type="submit" class="btn btn-primary">List My Pet</button>
+                                <% } else { %>
+                                <button type="submit" class="btn btn-primary" disabled>List My Pet</button>
+                                <% } %>
+                            </div>
+                         
                                         </form>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                   
+                 
                 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
                 <script>
@@ -152,8 +149,6 @@
                         autoclose: true
                     });
                 </script>
-                <%@ include file="footer.jsp" %>
-               
-                
+                      
     </body>
 </html>

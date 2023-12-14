@@ -25,8 +25,8 @@ String breed = request.getParameter("breed");
 int size = Integer.parseInt(request.getParameter("petSize"));
 User user = (User) session.getAttribute("userCookie");
 String username = user.getUsername();
-//String base64Image = request.getParameter("img");
-//byte[] imageBytes = Base64.getUrlDecoder().decode(base64Image);
+String base64Image = request.getParameter("img");
+byte[] imageBytes = Base64.getDecoder().decode(base64Image);
 int f_key = 0;
 int comparison = startDate.compareTo(endDate);
 List<String> errorMessages = new ArrayList<String>();
@@ -45,12 +45,13 @@ if (errorMessages.size() > 0) {
     <jsp:forward page="listapet.jsp" />
     <%
 } else{
-    Listing listing = new Listing(uploadDate, stayAtOwner, startDate, endDate, price, description, username);
-    ListingDAO listingdao = new ListingDAO();
-    f_key = listingdao.createListing(listing); 
-    Pet pet = new Pet(name, animal, breed, size);
-    PetDAO petdao = new PetDAO();
-    petdao.createPet(pet, f_key);
+    
+    //Listing listing = new Listing(uploadDate, stayAtOwner, startDate, endDate, price, description, username);
+    //ListingDAO listingdao = new ListingDAO();
+    //f_key = listingdao.createListing(listing); 
+    //Pet pet = new Pet(name, animal, breed, size);
+    //PetDAO petdao = new PetDAO();
+    //petdao.createPet(pet, f_key);
     %>
 
 	<meta http-equiv="refresh" content="4;url=index.jsp" />
@@ -77,7 +78,7 @@ if (errorMessages.size() > 0) {
 <body id="bodylisting">	
 
 	<div class="container theme-showcase" role="main">
-    <div><%=animal %></div>
+    <div><%=base64Image %></div>
     <%-- <div> <%=imageBytes %> </div> --%>
         <div class="alert alert-success text-center centered" role="alert" style="background-color: white; border-radius: 1rem;">
         Your Listing has been submitted to the platform! 
