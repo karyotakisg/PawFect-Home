@@ -33,6 +33,9 @@ List<String> errorMessages = new ArrayList<String>();
 if (comparison > 0) {
     errorMessages.add("Start date must be before end date");
 }
+if(size <= 0){
+    errorMessages.add("Pet size must be bigger than zero");
+}
 if (price < 0) {
     errorMessages.add("Price must be bigger than zero");
 }
