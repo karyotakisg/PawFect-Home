@@ -111,7 +111,38 @@
     </style>
 </head>
 <header>
-    <%@ include file= "navbar.jsp" %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <a class="navbar-brand" href="index.jsp">
+        <img src="https://i.postimg.cc/WpX4Bzwv/Brown-One-Line-Pet-Sitting-Logo-2.png" alt="Pawfect Home Logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.jsp">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.jsp#about">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="findapet.jsp">Find a Pet</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="listapet.jsp">List Your Pet</a>
+            </li>
+        </ul>
+    </div>
+
+
+        <div class="user-actions">
+            <a class="nav-link" href="login.jsp">Login</a>
+            <a class="nav-link" href="register.jsp">Register</a>
+        </div>
+</nav>
 </header>
 <body>
     <div class="jumbotron text-center">
@@ -144,22 +175,7 @@
             </div>
         </form>
     </div>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="https://i.postimg.cc/WpX4Bzwv/Brown-One-Line-Pet-Sitting-Logo-2.png" alt="Pawfect Home Logo"> <!-- Replace 'your-logo.png' with your logo image -->
-            </div>
-            <div class="footer-info">
-                <p>&copy; 2023 Pawfect Home</p>
-                <p><a href="#privacy-policy">Privacy Policy</a> | <a href="#terms-of-service">Terms of Service</a></p>
-            </div>
-        </div>
-    </footer>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     <%@ include file="footer.jsp" %> 
 
 </body>
 </html>

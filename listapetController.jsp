@@ -25,8 +25,8 @@ String breed = request.getParameter("breed");
 int size = Integer.parseInt(request.getParameter("petSize"));
 User user = (User) session.getAttribute("userCookie");
 String username = user.getUsername();
-String base64Image = request.getParameter("img");
-byte[] imageBytes = Base64.getDecoder().decode(base64Image);
+//String base64Image = request.getParameter("img");
+//byte[] imageBytes = Base64.getDecoder().decode(base64Image);
 int f_key = 0;
 int comparison = startDate.compareTo(endDate);
 List<String> errorMessages = new ArrayList<String>();
@@ -78,7 +78,6 @@ if (errorMessages.size() > 0) {
 <body id="bodylisting">	
 
 	<div class="container theme-showcase" role="main">
-    <div><%=base64Image %></div>
     <%-- <div> <%=imageBytes %> </div> --%>
         <div class="alert alert-success text-center centered" role="alert" style="background-color: white; border-radius: 1rem;">
         Your Listing has been submitted to the platform! 
