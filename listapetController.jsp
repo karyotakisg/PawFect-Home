@@ -26,7 +26,13 @@ int size = Integer.parseInt(request.getParameter("petSize"));
 User user = (User) session.getAttribute("userCookie");
 String username = user.getUsername();
 //String base64Image = request.getParameter("img");
-//byte[] imageBytes = Base64.getDecoder().decode(base64Image);
+//try {
+  //  byte[] imageBytes = Base64.getDecoder().decode(base64Image);
+    // Further processing with the imageBytes
+//} catch (IllegalArgumentException e) {
+    // Handle the exception, log it, or provide an error response
+    //e.printStackTrace();
+//}
 int f_key = 0;
 int comparison = startDate.compareTo(endDate);
 List<String> errorMessages = new ArrayList<String>();
@@ -49,12 +55,12 @@ if (errorMessages.size() > 0) {
     <%
 } else{
     
-    //Listing listing = new Listing(uploadDate, stayAtOwner, startDate, endDate, price, description, username);
-    //ListingDAO listingdao = new ListingDAO();
-    //f_key = listingdao.createListing(listing); 
-    //Pet pet = new Pet(name, animal, breed, size);
-    //PetDAO petdao = new PetDAO();
-    //petdao.createPet(pet, f_key);
+    Listing listing = new Listing(uploadDate, stayAtOwner, startDate, endDate, price, description, username);
+    ListingDAO listingdao = new ListingDAO();
+    f_key = listingdao.createListing(listing); 
+    Pet pet = new Pet(name, animal, breed, size);
+    PetDAO petdao = new PetDAO();
+    petdao.createPet(pet, f_key);
     %>
 
 	<meta http-equiv="refresh" content="4;url=index.jsp" />

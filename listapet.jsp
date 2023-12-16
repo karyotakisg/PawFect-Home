@@ -148,6 +148,7 @@
                         autoclose: true
                     });
                 </script>
+                
           <%@ include file="footer.jsp" %>             
     </body>
 </html>
