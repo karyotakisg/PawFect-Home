@@ -13,8 +13,6 @@ boolean stayAtOwner = true;
 if (stayHome == null){
     stayAtOwner = false;
 }
-String imageUrl = request.getParameter("imageUrl");
-
 
 java.time.LocalDate currentDate = java.time.LocalDate.now();
 java.sql.Date uploadDate = java.sql.Date.valueOf(currentDate);
@@ -28,14 +26,7 @@ String breed = request.getParameter("breed");
 int size = Integer.parseInt(request.getParameter("petSize"));
 User user = (User) session.getAttribute("userCookie");
 String username = user.getUsername();
-//String base64Image = request.getParameter("img");
-//try {
-  //  byte[] imageBytes = Base64.getDecoder().decode(base64Image);
-    // Further processing with the imageBytes
-//} catch (IllegalArgumentException e) {
-    // Handle the exception, log it, or provide an error response
-    //e.printStackTrace();
-//}
+String imageUrl = request.getParameter("imageUrl");
 int f_key = 0;
 int comparison = startDate.compareTo(endDate);
 List<String> errorMessages = new ArrayList<String>();
@@ -63,7 +54,7 @@ if (errorMessages.size() > 0) {
     f_key = listingdao.createListing(listing); 
     Pet pet = new Pet(name, animal, breed, size);
     PetDAO petdao = new PetDAO();
-    petdao.createPet(pet, f_key, imageUrl);
+    petdao.createPet(pet, f_key, "testphoto.png");
     %>
 
 
