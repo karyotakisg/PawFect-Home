@@ -3,7 +3,7 @@
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.text.SimpleDateFormat"%>  
 <%@ page import="java.time.LocalDate" %>
-<%@ page import="java.util.*"%>
+<%@ page import="java.util.* , java.io.*"%>
 <%@ page import="java.util.Base64" %>
 
 <%
@@ -13,6 +13,9 @@ boolean stayAtOwner = true;
 if (stayHome == null){
     stayAtOwner = false;
 }
+String imageUrl = request.getParameter("imageUrl");
+
+
 java.time.LocalDate currentDate = java.time.LocalDate.now();
 java.sql.Date uploadDate = java.sql.Date.valueOf(currentDate);
 java.sql.Date startDate = java.sql.Date.valueOf(request.getParameter("start"));
@@ -60,8 +63,9 @@ if (errorMessages.size() > 0) {
     f_key = listingdao.createListing(listing); 
     Pet pet = new Pet(name, animal, breed, size);
     PetDAO petdao = new PetDAO();
-    petdao.createPet(pet, f_key);
+    petdao.createPet(pet, f_key, imageUrl);
     %>
+
 
 	<meta http-equiv="refresh" content="4;url=index.jsp" />
      <meta charset="UTF-8">
@@ -87,9 +91,9 @@ if (errorMessages.size() > 0) {
 <body id="bodylisting">	
 
 	<div class="container theme-showcase" role="main">
-    <%-- <div> <%=imageBytes %> </div> --%>
+    <%-- <div> <%=imageUrl %> </div> --%>
         <div class="alert alert-success text-center centered" role="alert" style="background-color: white; border-radius: 1rem;">
-        Your Listing has been submitted to the platform! 
+        Your Listing has been submitted to the <%=imageUrl %> platform!
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
 </svg>

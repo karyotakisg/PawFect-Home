@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PetDAO {
-    public void createPet(Pet pet, int f_key) throws SQLException{
+    public void createPet(Pet pet, int f_key, String imageUrl) throws SQLException{
         DBConnection db = new DBConnection();
         Connection con = null;
-        String sql = "INSERT INTO pets VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO pets VALUES (?,?,?,?,?,?)";
         PreparedStatement stmt = null;
         try{
             con = db.getConnection();
@@ -20,6 +20,7 @@ public class PetDAO {
             stmt.setString(3, pet.getBreed());
             stmt.setInt(4, pet.getPet_size());
             stmt.setInt(5, f_key);
+            stmt.setString(6, imageUrl);
             stmt.executeUpdate();
         }catch(Exception e){
             throw new SQLException("Error while creating pet: " + e.getMessage(), e);

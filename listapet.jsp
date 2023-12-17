@@ -87,6 +87,29 @@
                                                     id="petImage" accept="image/*"
                                                     required>
                                             </div>
+                                            <!-- Add a hidden input field for the image URL -->
+                                            <input type="hidden" id="imageUrl" name="imageUrl">
+
+                                            <script>
+                                                document.getElementById('petImage').addEventListener('change', function (event) {
+                                                    const fileInput = event.target;
+                                                    const imageUrlInput = document.getElementById('imageUrl');
+                                    
+                                                    // Check if a file is selected
+                                                    if (fileInput.files && fileInput.files[0]) {
+                                                        const file = fileInput.files[0];
+                                    
+                                                        // Read the file as base64
+                                                        const reader = new FileReader();
+                                                        reader.onload = function (e) {
+                                                            // Save the base64 data URL in the hidden input field
+                                                            imageUrlInput.value = e.target.result;
+                                                        };
+                                                        reader.readAsDataURL(file);
+                                                    }
+                                                });
+                                            </script>
+
                                             <div class="form-group col-md-5">
                                                 <label >Reward</label>
                                                 <div class="input-group" >
