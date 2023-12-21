@@ -1,3 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="pawfect_home.*"%>
+<%@ page import="java.util.List, java.util.ArrayList" %>
+<%
+User user = (User) session.getAttribute("userCookie");
+try {
+    
+}
 <!doctype html>
 <html lang="en">
   <head>
