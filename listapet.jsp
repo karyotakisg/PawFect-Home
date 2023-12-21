@@ -162,16 +162,40 @@
                     </div>
                    
                  
-                <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+                <%@ include file="footer.jsp" %>
+
+                <!-- Add the necessary JavaScript libraries -->
+                <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+
+                <!-- Add the necessary CSS styles -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css">
+
                 <script>
-                    // Initialize the Datepicker for date range
-                    $('#datepicker .input-daterange').datepicker({
-                        format: 'yyyy-mm-dd',
-                        autoclose: true
-                    });
+                    // Function to initialize the iOS datepicker
+                    function initializeDatePicker() {
+                        const startDateInput = document.getElementById('startDate');
+                        const endDateInput = document.getElementById('endDate');
+
+                        // Set the input type to 'date' for iOS devices
+                        startDateInput.type = 'date';
+                        endDateInput.type = 'date';
+                    }
+
+                    // Check if the user is using an iOS device
+                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                    if (isIOS) {
+                        // Call the function to initialize the iOS datepicker after the document is fully loaded
+                        document.addEventListener('DOMContentLoaded', initializeDatePicker);
+                    } else {
+                        // Initialize the Datepicker for other devices
+                        $('#datepicker .input-daterange').datepicker({
+                            format: 'yyyy-mm-dd',
+                            autoclose: true
+                        });
+                    }
                 </script>
-                
+
           <%@ include file="footer.jsp" %>             
     </body>
 </html>
