@@ -88,17 +88,15 @@
                                                     required>
                                             </div>
                                             <!-- Add a hidden input field for the image URL -->
-                                            <input type="hidden" id="imageUrl" name="imageUrl">
-
                                             <script>
-                                                document.getElementById('petImage').addEventListener('change', function (event) {
+                                                function handleImageUpload(event) {
                                                     const fileInput = event.target;
                                                     const imageUrlInput = document.getElementById('imageUrl');
-                                    
+
                                                     // Check if a file is selected
                                                     if (fileInput.files && fileInput.files[0]) {
                                                         const file = fileInput.files[0];
-                                    
+
                                                         // Read the file as base64
                                                         const reader = new FileReader();
                                                         reader.onload = function (e) {
@@ -107,7 +105,9 @@
                                                         };
                                                         reader.readAsDataURL(file);
                                                     }
-                                                });
+                                                }
+
+                                                document.getElementById('petImage').addEventListener('change', handleImageUpload);
                                             </script>
 
                                             <div class="form-group col-md-5">
@@ -130,11 +130,11 @@
                                         <div class="form-group" id="datepicker">
                                             <label for="stayDuration">Duration</label>                                  
                                             <div class="input-daterange input-group">
-                                                <input type="text" class="form-control" style="border-radius: 1rem;" name="start" id="startDate" placeholder="From" required>
+                                                <input type="date" class="form-control" style="border-radius: 1rem;" name="start" id="startDate" placeholder="From" required>
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">-</span>
                                                 </div>
-                                                <input type="text" class="form-control" name="end" id="endDate" style="border-radius: 1rem;" placeholder="To" required>
+                                                <input type="date" class="form-control" name="end" id="endDate" style="border-radius: 1rem;" placeholder="To" required>
                                             </div>
                                         </div>
                                         
