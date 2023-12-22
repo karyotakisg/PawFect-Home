@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PetDAO {
-    public void createPet(Pet pet, int f_key, String imageUrl) throws SQLException{
+    public void createPet(Pet pet, int f_key) throws SQLException{
         DBConnection db = new DBConnection();
         Connection con = null;
         String sql = "INSERT INTO pets VALUES (?,?,?,?,?,?)";
@@ -20,7 +20,7 @@ public class PetDAO {
             stmt.setString(3, pet.getBreed());
             stmt.setInt(4, pet.getPet_size());
             stmt.setInt(5, f_key);
-            stmt.setString(6, imageUrl);
+            stmt.setString(6, pet.getPicture());
             stmt.executeUpdate();
         }catch(Exception e){
             throw new SQLException("Error while creating pet: " + e.getMessage(), e);
@@ -42,7 +42,7 @@ public class PetDAO {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
-	 			pets.add( new Pet( rs.getString("pet_name"),rs.getString("kind_of_pet"), rs.getString("breed"), rs.getInt("pet_size")));
+	 			pets.add( new Pet( rs.getString("pet_name"),rs.getString("kind_of_pet"), rs.getString("breed"), rs.getInt("pet_size"), rs.getString("picture")));
 			}
  			rs.close();
 			stmt.close(); 

@@ -2,6 +2,7 @@ package pawfect_home;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.sql.ResultSet;
 import java.util.List;
 
 public class ListingDAO {
@@ -40,23 +41,27 @@ public class ListingDAO {
     public List<Listing> getListings() throws Exception {
 
         List<Listing> getListings = new ArrayList<>();
-        String query = "SELECT * FROM posts";
-
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://195.251.249.131:3306/ismgroup10", "ismgroup10", "stmj63");
-             PreparedStatement preparedStatement = con.prepareStatement(query);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
-
-            while (resultSet.next()) {
+        String query = "SELECT * FROM posts left join pets on posts.post_id = pets.post_id;";
+        DBConnection db = new DBConnection();
+        Connection con;
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+        
+            while (rs.next()) {
                 // Retrieve listings' data from the result set
-                java.sql.Date upload_date = resultSet.getDate("upload date");
-                boolean stay_at_owner = resultSet.getBoolean("stay at owner");
-                java.sql.Date start_date = resultSet.getDate("start date");
-                java.sql.Date end_date = resultSet.getDate("end date");
-                int price = resultSet.getInt("price");
-                String description = resultSet.getString("description");
-
+                java.sql.Date upload_date = rs.getDate("upload date");
+                boolean stay_at_owner = rs.getBoolean("stay at owner");
+                java.sql.Date start_date = rs.getDate("start date");
+                java.sql.Date end_date = rs.getDate("end date");
+                int price = rs.getInt("price");
+                String description = rs.getString("description");
+                
                 // Create a List object with the retrieved data
-                Listing listings = new Listing(upload_date, stay_at_owner, start_date, end_date, price, description, "testUser");
+                Listing listings = new Listing(upload_date, stay_at_owner, start_date, end_date, price, description, "testUser",
+                new Pet(rs.getString("pet_name"),rs.getString("kind_of_pet"),
+                 rs.getString("breed"), rs.getInt("pet_size"), rs.getString("picture")));
                 // Add the User object to the list
                 getListings.add(listings);
             }
@@ -95,5 +100,7 @@ public class ListingDAO {
             throw new Exception("Error during deletion: " + e.getMessage(), e);
         }
     }
+
+
 
 }

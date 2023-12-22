@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="pawfect_home.*"%>
 <%@ page import="java.util.List, java.util.ArrayList" %>
-<%
-User user = (User) session.getAttribute("userCookie");
-try {
-    
-}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -38,10 +34,31 @@ try {
     <div class = h2>
       <h2>Current Listings</h2>
     </div>
-
+    
+    <%
+    if (user == null) {
+    %>
+    <div class="text-center">
+        <div class="alert alert-warning d-inline-block" role="alert" style="border-radius: 1rem; margin-top: 10px;">
+            You must be registered to see more info for the pets!
+        </div>
+    </div>
+    <% } %>
 
     <!--Group Card-->
+    <%
+    PetDAO petd = new PetDAO();
+    List<Pet>listofpet = petd.getPets();
+    %>
     <div class="row row-cols-1 row-cols-md-3 g-4">
+    <%
+    
+    for (Pet pet : listofpet) {
+    %>
+
+    }
+
+    
       <div class="col">
         <div class="card h-100">
             <div class="row g-0">

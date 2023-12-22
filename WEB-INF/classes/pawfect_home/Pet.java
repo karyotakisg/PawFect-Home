@@ -6,12 +6,15 @@ public class Pet {
     private String kind_of_pet;
     private String breed;
     private int pet_size;
+    private String picture;
 
-    public Pet(String pet_name, String kind_of_pet, String breed, int pet_size) {
+
+    public Pet(String pet_name, String kind_of_pet, String breed, int pet_size, String picture) {
         this.pet_name = pet_name;
         this.kind_of_pet = kind_of_pet;
         this.breed = breed;
         this.pet_size = pet_size;
+        this.picture = picture;
     }
 
 
@@ -46,5 +49,10 @@ public class Pet {
         return pet_size;
     }
 
-
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+    public String getPicture() {
+        return picture;
+    }
 }
