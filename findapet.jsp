@@ -47,19 +47,16 @@
 
     <!--Group Card-->
     <%
-    PetDAO petd = new PetDAO();
-    List<Pet>listofpet = petd.getPets();
+    ListingDAO listingd = new ListingDAO();
+    List<Listing> listoflistings = listingd.getListings();
     %>
     <div class="row row-cols-1 row-cols-md-3 g-4">
     <%
     
-    for (Pet pet : listofpet) {
+    for (Listing list : listoflistings) {
     %>
 
-    }
-
-    
-      <div class="col">
+    <div class="col">
         <div class="card h-100">
             <div class="row g-0">
                 <div class="col-md-6">
@@ -67,7 +64,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
-                        <h5 class="card-title">JimD</h5>
+                        <h5 class="card-title"></h5>
                         <div class="row">
                             <div class="col">
                                 <p><strong>Location:</strong> Artemida</p>
@@ -96,6 +93,10 @@
             </div>
         </div>
     </div>
+    }
+
+    
+      
     
     <div class="col">
       <div class="card h-100">

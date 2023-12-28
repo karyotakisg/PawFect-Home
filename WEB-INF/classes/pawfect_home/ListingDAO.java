@@ -41,7 +41,7 @@ public class ListingDAO {
     public List<Listing> getListings() throws Exception {
 
         List<Listing> getListings = new ArrayList<>();
-        String query = "SELECT * FROM posts left join pets on posts.post_id = pets.post_id;";
+        String query = "SELECT * FROM posts;";
         DBConnection db = new DBConnection();
         Connection con;
         try {
@@ -57,11 +57,12 @@ public class ListingDAO {
                 java.sql.Date end_date = rs.getDate("end date");
                 int price = rs.getInt("price");
                 String description = rs.getString("description");
+                String username = rs.getString("username");
+                int postid = rs.getInt("post_id");
                 
                 // Create a List object with the retrieved data
-                Listing listings = new Listing(upload_date, stay_at_owner, start_date, end_date, price, description, "testUser",
-                new Pet(rs.getString("pet_name"),rs.getString("kind_of_pet"),
-                 rs.getString("breed"), rs.getInt("pet_size"), rs.getString("picture")));
+                Listing listings = new Listing(upload_date, stay_at_owner,
+                     start_date, end_date, price, description, username, postid);
                 // Add the User object to the list
                 getListings.add(listings);
             }

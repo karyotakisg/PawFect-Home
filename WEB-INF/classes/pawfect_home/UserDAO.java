@@ -194,6 +194,51 @@ public class UserDAO    {
 			}
 
 	}//end of register
+	public User getUsersByUsername(String username) throws Exception {
+
+		User user = null; 
+		DBConnection db = new DBConnection();
+		Connection con = null;
+
+		// SQL statement to be executed
+		String sql = "SELECT * FROM users WHERE username = ?;";
+
+		try {
+			// open connection and get Connection object
+			con = db.getConnection();
+
+
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1,username);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+	 			user = new User(rs.getString("firstname"), rs.getString("lastname"),
+                                           rs.getString("email"),rs.getLong("phone"),rs.getString("location"),
+                                           rs.getString("username"),rs.getString("password"));
+			}
+
+ 			rs.close(); // closing ResultSet
+			stmt.close(); // closing PreparedStatement
+			db.close(); // closing connection
+
+			return user;
+
+		} catch (Exception e) {
+
+		} finally {
+
+			try {
+			     db.close();
+			} catch (Exception e) {
+
+			}
+
+		}
+		return user;
+	} //End of getUsers
+
     
 } //End of class
 

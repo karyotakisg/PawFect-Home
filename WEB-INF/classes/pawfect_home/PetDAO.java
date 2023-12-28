@@ -57,4 +57,35 @@ public class PetDAO {
             stmt.close();     
 		}
 	}
+
+
+public Pet getPetByPostid(int postid) throws Exception {
+		Pet pet = null;
+		DBConnection db = new DBConnection();
+		Connection con = null;
+        ResultSet rs = null;
+        PreparedStatement stmt = null;
+		String sql = "SELECT * FROM Pets Where post_id = ?;";
+		try {
+			con = db.getConnection();
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, postid);            
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+	 			pet = new Pet( rs.getString("pet_name"),rs.getString("kind_of_pet"),
+                 rs.getString("breed"), rs.getInt("pet_size"), rs.getString("picture"));
+			}
+ 			rs.close();
+			stmt.close(); 
+			db.close(); 
+			return pet;
+
+		} catch (Exception e) {
+            throw new SQLException("Error while creating pet: " + e.getMessage(), e);
+		} finally {
+            db.close();
+            rs.close();
+            stmt.close();     
+		}
+	}
 }
