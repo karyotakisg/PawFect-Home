@@ -198,7 +198,7 @@ public class UserDAO    {
 
 		User user = null; 
 		DBConnection db;
-		Connection con = null;
+		Connection con;
 
 		// SQL statement to be executed
 		String sql = "SELECT * FROM users WHERE username = ?;";
@@ -215,9 +215,11 @@ public class UserDAO    {
 			ResultSet rs = stmt.executeQuery();
 
 			if (rs.next()) {
-	 			user = new User(rs.getString("firstname"), rs.getString("lastname"),
+	 			user = new User(rs.getString("first_name"), rs.getString("surname"),
                                            rs.getString("email"),rs.getLong("phone"),rs.getString("location"),
                                            rs.getString("username"),rs.getString("password"));
+			} else {
+				throw new Exception("There is no user to connect with this post");
 			}
 
  			rs.close(); // closing ResultSet

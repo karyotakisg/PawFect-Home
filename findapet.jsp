@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
 
+
   </head>
   <body>
  <!--navbar-->
@@ -32,7 +33,7 @@
     </div>
     <!--Ratio buttons-->
     <div class = h2>
-      <h2>Current Listings</h2>
+      <h2>Discover Our Listings</h2>
     </div>
     
     <%
@@ -62,29 +63,30 @@
     %>
     <div class="row row-cols-1 row-cols-md-3 g-4">
     <%
-    
+    int count = 0;
     for (Listing post : listoflistings) {
+        count++;
         UserDAO userd = new UserDAO();
         PetDAO petd = new PetDAO();
-        User userofpost = userd.getUsersByUsername(post.getUsername);
+        User userofpost = userd.getUsersByUsername(post.getUsername());
         Pet petofpost = petd.getPetByPostid(post.getPostid());
-        if (userofpost != null && petofpost != null) {
+        if (!(userofpost != null && petofpost != null)) {
             break;
         } else {
     %>
-
+    <!-- Post of pet -->
     <div class="col">
         <div class="card h-100">
             <div class="row g-0">
                 <div class="col-md-6">
-                    <img class="img-thumbnail" src="images/pet1.jpg" alt="Card Image" >
+                    <img class="img-thumbnail" src="<%=petofpost.getPicture()%>" alt="Card Image" >
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
-                        <h5 class="card-title"><%=petofpost.getPet_name() %></h5>
+                        <h5 class="card-title"><u><%=petofpost.getPet_name() %></u></h5>
                         <div class="row">
                             <div class="col">
-                                <p><strong>Location:</strong> <%=userofpost.getLocation() %>></p>
+                                <p><strong>Location:</strong> <%=userofpost.getLocation() %></p>
                             </div>
                         </div>
                         <div class="row">
@@ -102,17 +104,19 @@
                                 <p><small>Uploaded at <%=post.getUpload_date() %></small></p>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cardModal1">
-                            See More
-                        </button>
+                         <% if (user != null) { %>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cardModal<%=count%>">See More</button>
+                            <% } else { %>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cardModal<%=count%>" disabled>See More</button>
+                            <% } %>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-        <!-- Modal -->
-    <div class="modal fade" id="cardModal1" tabindex="-1" role="dialog" aria-labelledby="cardModal1Label" aria-hidden="true">
+    <!-- Info of pet -->
+    <div class="modal fade" id="cardModal<%=count%>" tabindex="-1" role="dialog" aria-labelledby="cardModal1Label" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -124,10 +128,10 @@
             <div class="modal-body">
             <div class="row">
                 <div class="col-md-6">
-                <img src="images/pet1.jpg" class="img-fluid mb-2" alt="Larger Image">
+                <img src="<%=petofpost.getPicture()%>" class="img-fluid mb-2" alt="Larger Image">
                 </div>
                 <div class="col-md-6">
-                <h5><%=petofpost.getPet_name() %></h5>
+                <h5><u><%=petofpost.getPet_name() %></u></h5>
                 <p>Animal: <%=petofpost.getKind_of_pet()%>
                     <br> Breed: <%=petofpost.getBreed()%>
                     <% if (post.getStay_at_owner()){ %>
@@ -140,7 +144,18 @@
                     <br>Dates: <%=post.getStart_date() %> - <%=post.getEnd_date() %>  
                     <br> Price: $<%=post.getPrice()%>  per day 
                     <br> Description: <%=post.getDescription()%></p>
-                <button type="button" class="btn btn-success">I am Interested</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmationModal<%=count%>"
+                    data-container="body" data-toggle="popover" data-placement="bottom" 
+                    data-content="Are you sure for your interesting?">I am interested!</button>
+                    <script>
+    // Enable Bootstrap popover
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover({
+            trigger: 'hover'
+            html: true
+        });
+    });
+</script>
                 </div>
             </div>
             </div>
@@ -148,12 +163,20 @@
         </div>
     </div>
 
+
     <% }
     }
     } %>
 
 </div>
+
+
+
+<div>
+<hr style="border: none; background-color: #49392d;">
+</div>
 <%@ include file="footer.jsp" %>  
+
 
 
 <!-- jQuery -->
