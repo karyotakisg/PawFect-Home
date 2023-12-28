@@ -45,15 +45,32 @@
     </div>
     <% } %>
 
+
     <!--Group Card-->
     <%
     ListingDAO listingd = new ListingDAO();
     List<Listing> listoflistings = listingd.getListings();
+    if (listoflistings.isEmpty()) { %>
+    <div class="text-center">
+    <div class="alert alert-info d-inline-block" role="info" style="border-radius: 1rem; margin-top: 10px;">
+        At this moment there is no pets to care.<br> Please try again later :)
+    </div>
+</div>
+
+
+    <% } else {
     %>
     <div class="row row-cols-1 row-cols-md-3 g-4">
     <%
     
-    for (Listing list : listoflistings) {
+    for (Listing post : listoflistings) {
+        UserDAO userd = new UserDAO();
+        PetDAO petd = new PetDAO();
+        User userofpost = userd.getUsersByUsername(post.getUsername);
+        Pet petofpost = petd.getPetByPostid(post.getPostid());
+        if (userofpost != null && petofpost != null) {
+            break;
+        } else {
     %>
 
     <div class="col">
@@ -64,25 +81,25 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
+                        <h5 class="card-title"><%=petofpost.getPet_name() %></h5>
                         <div class="row">
                             <div class="col">
-                                <p><strong>Location:</strong> Artemida</p>
+                                <p><strong>Location:</strong> <%=userofpost.getLocation() %>></p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p><strong>Price:</strong> $30 per week</p>
+                                <p><strong>Price:</strong> $<%=post.getPrice()%>  per day</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                              <p><strong>Dates:</strong> 02/02/2023 - 02/03/2023</p>
+                              <p><strong>Dates:</strong> <%=post.getStart_date() %> - <%=post.getEnd_date() %></p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p><small>Uploaded at 18/02/2022</small></p>
+                                <p><small>Uploaded at <%=post.getUpload_date() %></small></p>
                             </div>
                         </div>
                         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cardModal1">
@@ -93,154 +110,51 @@
             </div>
         </div>
     </div>
+
+        <!-- Modal -->
+    <div class="modal fade" id="cardModal1" tabindex="-1" role="dialog" aria-labelledby="cardModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="cardModal1Label">More Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                <img src="images/pet1.jpg" class="img-fluid mb-2" alt="Larger Image">
+                </div>
+                <div class="col-md-6">
+                <h5><%=petofpost.getPet_name() %></h5>
+                <p>Animal: <%=petofpost.getKind_of_pet()%>
+                    <br> Breed: <%=petofpost.getBreed()%>
+                    <% if (post.getStay_at_owner()){ %>
+                        <br> Stay at owner: False
+                    <% } else { %>
+                        <br> Stay at owner: True
+                    <% } %>
+                     
+                    <br> Location: <%=userofpost.getLastname()%> 
+                    <br>Dates: <%=post.getStart_date() %> - <%=post.getEnd_date() %>  
+                    <br> Price: $<%=post.getPrice()%>  per day 
+                    <br> Description: <%=post.getDescription()%></p>
+                <button type="button" class="btn btn-success">I am Interested</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <% }
     }
-
-    
-      
-    
-    <div class="col">
-      <div class="card h-100">
-          <div class="row g-0">
-              <div class="col-md-6">
-                  <img class="media-object img-thumbnail" src="images/pet2.jpg" alt="Card Image">
-              </div>
-              <div class="col-md-6">
-                  <div class="card-body">
-                      <h5 class="card-title">Johnny</h5>
-                      <div class="row">
-                          <div class="col">
-                              <p><strong>Location:</strong> Chania, Greece</p>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col">
-                              <p><strong>Price:</strong> $3 per day</p>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col">
-                              <p><strong>Dates:</strong> 20/01/2023 - 4/02/2023</p>
-                          </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                            <p><small>Uploaded at 01/01/2022</small></p>
-                        </div>
-                    </div>
-                      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cardModal1">
-                          See More
-                      </button>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  
-  <div class="col">
-    <div class="card h-100">
-        <div class="row g-0">
-            <div class="col-md-6">
-                <img class="media-object img-thumbnail" src="images/pet3.jpg" alt="Card Image">
-            </div>
-            <div class="col-md-6">
-                <div class="card-body">
-                    <h5 class="card-title">Mairi</h5>
-                    <div class="row">
-                        <div class="col">
-                            <p><strong>Location:</strong> Argos, Greece</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p><strong>Price:</strong> $7 per day</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                          <p><strong>Dates:</strong> 10/12/2023 - 17/12/2023</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p><small>Uploaded at 03/05/2022</small></p>
-                        </div>
-                    </div>                   
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cardModal1">
-                        See More
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-      <div class="col">
-    <div class="card h-100">
-        <div class="row g-0">
-            <div class="col-md-6">
-                <img class="media-object img-thumbnail" src="images/pet4.jpg" alt="Card Image">
-            </div>
-            <div class="col-md-6">
-                <div class="card-body">
-                    <h5 class="card-title">Efti</h5>
-                    <div class="row">
-                        <div class="col">
-                            <p><strong>Location:</strong> Exarcheia, Athens</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p><strong>Price:</strong> $10 per day</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p><strong>Dates:</strong> 22/03/2023 - 27/03/2023</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p><small>Uploaded at 29/10/2022</small></p>
-                        </div>
-                    </div>                   
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cardModal1">
-                        See More
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    } %>
 
 </div>
 <%@ include file="footer.jsp" %>  
 
-      
-      <!-- Modal -->
-<div class="modal fade" id="cardModal1" tabindex="-1" role="dialog" aria-labelledby="cardModal1Label" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="cardModal1Label">More Information</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-6">
-            <img src="images/pet1.jpg" class="img-fluid mb-2" alt="Larger Image">
-          </div>
-          <div class="col-md-6">
-            <h5>JimD</h5>
-            <p>Animal: Dog <br> Breed: Labrador <br> Stay at owner: False <br> Location: Artemida, Athens <br>Dates: 01/01/2023 - 01/01/2023  <br> Price: $250 <br> Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis justo id dolor cursus condimentum.</p>
-            <button type="button" class="btn btn-success">I am Interested</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

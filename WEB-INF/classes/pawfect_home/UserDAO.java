@@ -197,13 +197,14 @@ public class UserDAO    {
 	public User getUsersByUsername(String username) throws Exception {
 
 		User user = null; 
-		DBConnection db = new DBConnection();
+		DBConnection db;
 		Connection con = null;
 
 		// SQL statement to be executed
 		String sql = "SELECT * FROM users WHERE username = ?;";
 
 		try {
+			db = new DBConnection();
 			// open connection and get Connection object
 			con = db.getConnection();
 
@@ -226,17 +227,8 @@ public class UserDAO    {
 			return user;
 
 		} catch (Exception e) {
-
-		} finally {
-
-			try {
-			     db.close();
-			} catch (Exception e) {
-
-			}
-
-		}
-		return user;
+			throw new Exception("Error executing SQL query: " + e.getMessage(), e);
+		} 
 	} //End of getUsers
 
     

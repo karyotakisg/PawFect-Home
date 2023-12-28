@@ -42,19 +42,20 @@ public class ListingDAO {
 
         List<Listing> getListings = new ArrayList<>();
         String query = "SELECT * FROM posts;";
-        DBConnection db = new DBConnection();
+        DBConnection db;
         Connection con;
         try {
+            db = new DBConnection();
             con = db.getConnection();
             PreparedStatement stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
         
             while (rs.next()) {
                 // Retrieve listings' data from the result set
-                java.sql.Date upload_date = rs.getDate("upload date");
-                boolean stay_at_owner = rs.getBoolean("stay at owner");
-                java.sql.Date start_date = rs.getDate("start date");
-                java.sql.Date end_date = rs.getDate("end date");
+                java.sql.Date upload_date = rs.getDate("upload_date");
+                boolean stay_at_owner = rs.getBoolean("stay_at_owner");
+                java.sql.Date start_date = rs.getDate("start_date");
+                java.sql.Date end_date = rs.getDate("end_date");
                 int price = rs.getInt("price");
                 String description = rs.getString("description");
                 String username = rs.getString("username");
