@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="css/findapet.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
-
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 
   </head>
   <body>
@@ -37,6 +41,7 @@
     </div>
     
     <%
+    int numberpost = 0;
     if (user == null) {
     %>
     <div class="text-center">
@@ -44,12 +49,11 @@
             You must be registered to see more info for the pets!
         </div>
     </div>
-    <% } %>
+    <% } else { %>
 
 
     <!--Group Card-->
     <%
-    int numberpost = 0;
     ListingDAO listingd = new ListingDAO();
     List<Listing> listoflistings = listingd.getListings();
     if (listoflistings.isEmpty()) { %>
@@ -146,9 +150,9 @@
                 <p>Animal: <%=petofpost.getKind_of_pet()%>
                     <br> Breed: <%=petofpost.getBreed()%>
                     <% if (post.getStay_at_owner()){ %>
-                        <br> Stay at owner: False
+                        <br> Stay at owner: No
                     <% } else { %>
-                        <br> Stay at owner: True
+                        <br> Stay at owner: Yes
                     <% } %>
                      
                     <br> Location: <%=userofpost.getLastname()%> 
@@ -171,8 +175,11 @@
                     %>
 
                     <br>Total Price: $<%= totalPrice %>
-
-                    <br> Description: <%=post.getDescription()%></p>
+                    <% if (post.getDescription().equals("")) { %>
+                        <br> Description: None</p>
+                     <% } else { %>
+                        <br> Description: <%=post.getDescription()%></p>
+                    <% } %>
                 <button type="button" class="btn btn-success" data-toggle="modal"submit = <%mail.sendEmail();%>
                     data-container="body" data-toggle="popover" data-placement="bottom" 
                     data-content="Are you sure for your interesting?">I am interested!</button>
@@ -189,10 +196,12 @@
 
     <% }
     }
-    } %>
+    } 
+    }   %>
+
 
 </div>
-<% if (numberpost == 0) { %>
+<% if (numberpost == 0 && user != null) { %>
     <div class="text-center">
     <div class="alert alert-warning d-inline-block" role="alert" style="border-radius: 1rem; margin-top: 10px;">
         At this moment there is no pets to care from other owners.<br> Please try again later :)

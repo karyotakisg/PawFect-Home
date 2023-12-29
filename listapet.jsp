@@ -88,15 +88,17 @@
                                                     required>
                                             </div>
                                             <!-- Add a hidden input field for the image URL -->
+                                            <input type="hidden" id="imageUrl" name="imageUrl">
+
                                             <script>
-                                                function handleImageUpload(event) {
+                                                document.getElementById('petImage').addEventListener('change', function (event) {
                                                     const fileInput = event.target;
                                                     const imageUrlInput = document.getElementById('imageUrl');
-
+                                    
                                                     // Check if a file is selected
                                                     if (fileInput.files && fileInput.files[0]) {
                                                         const file = fileInput.files[0];
-
+                                    
                                                         // Read the file as base64
                                                         const reader = new FileReader();
                                                         reader.onload = function (e) {
@@ -105,9 +107,7 @@
                                                         };
                                                         reader.readAsDataURL(file);
                                                     }
-                                                }
-
-                                                document.getElementById('petImage').addEventListener('change', handleImageUpload);
+                                                });
                                             </script>
 
                                             <div class="form-group col-md-5">
@@ -130,11 +130,11 @@
                                         <div class="form-group" id="datepicker">
                                             <label for="stayDuration">Duration</label>                                  
                                             <div class="input-daterange input-group">
-                                                <input type="date" class="form-control" style="border-radius: 1rem;" name="start" id="startDate" placeholder="From" required>
+                                                <input type="text" class="form-control" style="border-radius: 1rem;" name="start" id="startDate" placeholder="From" required>
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">-</span>
                                                 </div>
-                                                <input type="date" class="form-control" name="end" id="endDate" style="border-radius: 1rem;" placeholder="To" required>
+                                                <input type="text" class="form-control" name="end" id="endDate" style="border-radius: 1rem;" placeholder="To" required>
                                             </div>
                                         </div>
                                         
@@ -162,40 +162,16 @@
                     </div>
                    
                  
-                <%@ include file="footer.jsp" %>
-
-                <!-- Add the necessary JavaScript libraries -->
-                <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
-
-                <!-- Add the necessary CSS styles -->
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css">
-
+                <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
                 <script>
-                    // Function to initialize the iOS datepicker
-                    function initializeDatePicker() {
-                        const startDateInput = document.getElementById('startDate');
-                        const endDateInput = document.getElementById('endDate');
-
-                        // Set the input type to 'date' for iOS devices
-                        startDateInput.type = 'date';
-                        endDateInput.type = 'date';
-                    }
-
-                    // Check if the user is using an iOS device
-                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-                    if (isIOS) {
-                        // Call the function to initialize the iOS datepicker after the document is fully loaded
-                        document.addEventListener('DOMContentLoaded', initializeDatePicker);
-                    } else {
-                        // Initialize the Datepicker for other devices
-                        $('#datepicker .input-daterange').datepicker({
-                            format: 'yyyy-mm-dd',
-                            autoclose: true
-                        });
-                    }
+                    // Initialize the Datepicker for date range
+                    $('#datepicker .input-daterange').datepicker({
+                        format: 'yyyy-mm-dd',
+                        autoclose: true
+                    });
                 </script>
-
+                
           <%@ include file="footer.jsp" %>             
     </body>
 </html>
