@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="pawfect_home.*"%>
-<%@ page import="java.util.List, java.util.ArrayList" %>
+<%@ page import="java.text.SimpleDateFormat, java.util.List, java.util.ArrayList,java.time.LocalDate, java.time.format.DateTimeFormatter, java.time.temporal.ChronoUnit, java.time.ZoneId, java.util.Date" %>
 
 <!doctype html>
 <html lang="en">
@@ -96,7 +96,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                              <p><strong>Dates:</strong> <%=post.getStart_date() %> - <%=post.getEnd_date() %></p>
+                              <p><strong>Dates:</strong> <%=post.getStart_date() %> | <%=post.getEnd_date() %></p>
                             </div>
                         </div>
                         <div class="row">
@@ -114,6 +114,12 @@
             </div>
         </div>
     </div>
+    <!-- prepate body for email-->
+    <% if (user != null) {
+    String body = "His fullname is " + user.getFirstname() + user.getLastname() + "and username" + user.getUsername() +
+    "Phone: " + user.getPhone() + "Email" + user.getEmail();
+    MailSender mail = new MailSender(body, userofpost.getEmail());%>
+    
 
     <!-- Info of pet -->
     <div class="modal fade" id="cardModal<%=count%>" tabindex="-1" role="dialog" aria-labelledby="cardModal1Label" aria-hidden="true">
@@ -141,27 +147,38 @@
                     <% } %>
                      
                     <br> Location: <%=userofpost.getLastname()%> 
-                    <br>Dates: <%=post.getStart_date() %> - <%=post.getEnd_date() %>  
-                    <br> Price: $<%=post.getPrice()%>  per day 
+                    <br>Dates: <%=post.getStart_date() %> | <%=post.getEnd_date() %>  
+                    <%
+                        Date startDate = post.getStart_date();
+                        Date endDate = post.getEnd_date();
+
+                        // Format Date objects into strings if needed
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        String startDateString = dateFormat.format(startDate);
+                        String endDateString = dateFormat.format(endDate);
+
+                        // Calculate the difference in days
+                        ZoneId zoneId = ZoneId.of("UTC");
+                        long millisecondsPerDay = 24 * 60 * 60 * 1000;
+                        long daysDifference = (endDate.getTime() - startDate.getTime()) / millisecondsPerDay;
+                        //include and the first day
+                        double totalPrice = (1 + daysDifference) * post.getPrice();
+                    %>
+
+                    <br>Total Price: $<%= totalPrice %>
+
                     <br> Description: <%=post.getDescription()%></p>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmationModal<%=count%>"
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="sendMaildiv"
                     data-container="body" data-toggle="popover" data-placement="bottom" 
                     data-content="Are you sure for your interesting?">I am interested!</button>
-                    <script>
-    // Enable Bootstrap popover
-    $(document).ready(function () {
-        $('[data-toggle="popover"]').popover({
-            trigger: 'hover'
-            html: true
-        });
-    });
-</script>
+                    
                 </div>
             </div>
             </div>
         </div>
         </div>
     </div>
+    <% } %>
 
 
     <% }
