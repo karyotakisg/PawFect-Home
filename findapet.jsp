@@ -49,6 +49,7 @@
 
     <!--Group Card-->
     <%
+    int numberpost = 0;
     ListingDAO listingd = new ListingDAO();
     List<Listing> listoflistings = listingd.getListings();
     if (listoflistings.isEmpty()) { %>
@@ -64,6 +65,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
     <%
     int count = 0;
+    
     for (Listing post : listoflistings) {
         count++;
         UserDAO userd = new UserDAO();
@@ -73,6 +75,9 @@
         if (!(userofpost != null && petofpost != null)) {
             break;
         } else {
+    %>
+    <% if (!(userofpost.getUsername().equals(user.getUsername()))) { 
+      numberpost++;
     %>
     <!-- Post of pet -->
     <div class="col">
@@ -168,7 +173,7 @@
                     <br>Total Price: $<%= totalPrice %>
 
                     <br> Description: <%=post.getDescription()%></p>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="sendMaildiv"
+                <button type="button" class="btn btn-success" data-toggle="modal"submit = <%mail.sendEmail();%>
                     data-container="body" data-toggle="popover" data-placement="bottom" 
                     data-content="Are you sure for your interesting?">I am interested!</button>
                     
@@ -179,6 +184,7 @@
         </div>
     </div>
     <% } %>
+    <% } %>
 
 
     <% }
@@ -186,6 +192,13 @@
     } %>
 
 </div>
+<% if (numberpost == 0) { %>
+    <div class="text-center">
+    <div class="alert alert-warning d-inline-block" role="alert" style="border-radius: 1rem; margin-top: 10px;">
+        At this moment there is no pets to care from other owners.<br> Please try again later :)
+    </div>
+</div>
+<% } %>
 
 
 
