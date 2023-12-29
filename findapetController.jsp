@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="pawfect_home.*" %> 
 
-<% if (user != null) {
+<% if (user == null) { %>
+    <jsp:forward page="login.jsp" />
+<% } else {
+    
+
 
 
 
