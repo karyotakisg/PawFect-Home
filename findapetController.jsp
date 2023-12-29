@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="pawfect_home.*" %> 
 
-<% if (user == null) { %>
+
+<% User user = (User) session.getAttribute("userCookie");
+ if (user == null) { %>
     <jsp:forward page="login.jsp" />
 <% } else {
-    
-
-
-
-
+    String recipient = request.getParameter("recipient");
+    String body = "His fullname is " + user.getFirstname() + user.getLastname() + "and username" + user.getUsername() +
+    "Phone: " + user.getPhone() + "Email" + user.getEmail();
+    MailSender mail = new MailSender(body, recipient);
+    mail.sendEmail();
 %>
 
-	<meta http-equiv="refresh" content="4;url=index.jsp" />
+	<meta http-equiv="refresh" content="4;url=findapet.jsp" />
      <meta charset="UTF-8">
         <title>Pet Sharing Platform</title>
         <!-- Include Bootstrap CSS -->

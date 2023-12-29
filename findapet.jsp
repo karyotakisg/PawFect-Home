@@ -131,7 +131,8 @@
     
 
     <!-- Info of pet -->
-    <div class="modal fade" id="cardModal<%=count%>" tabindex="-1" role="dialog" aria-labelledby="cardModal1Label" aria-hidden="true">
+    <form method="POST" action="findapetController.jsp" class="modal fade" id="cardModal<%=count%>" tabindex="-1" role="dialog" aria-labelledby="cardModal1Label" aria-hidden="true">
+        <input type="hidden" name="recipient" value="<%=userofpost.getEmail()%>"/>
         <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -180,16 +181,24 @@
                      <% } else { %>
                         <br> Description: <%=post.getDescription()%></p>
                     <% } %>
-                <button type="button" class="btn btn-success" data-toggle="modal"submit = <%mail.sendEmail();%>
+                
+                    <input type="submit" value="I am interested" class="btn btn-success"  data-toggle="modal" type="submit"
                     data-container="body" data-toggle="popover" data-placement="bottom" 
-                    data-content="Are you sure for your interesting?">I am interested!</button>
+                    data-content="Are you sure for your interesting?">
+                    <!-- Initialize popover component -->
+                    <script>
+                    $(document).ready(function(){
+                        $('[data-toggle="popover"]').popover();
+                    });
+                    </script>
+                
                     
                 </div>
             </div>
             </div>
         </div>
         </div>
-    </div>
+    </form>
     <% } %>
     <% } %>
 
@@ -220,6 +229,9 @@
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="path/to/bootstrap.min.css">
+<script src="path/to/jquery.min.js"></script>
+<script src="path/to/bootstrap.min.js"></script>
 
 <!-- Bootstrap JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
