@@ -123,11 +123,7 @@
             </div>
         </div>
     </div>
-    <!-- prepate body for email-->
-    <% if (user != null) {
-    String body = "His fullname is " + user.getFirstname() + user.getLastname() + "and username" + user.getUsername() +
-    "Phone: " + user.getPhone() + "Email" + user.getEmail();
-    MailSender mail = new MailSender(body, userofpost.getEmail());%>
+    
     
 
     <!-- Info of pet -->
@@ -181,6 +177,7 @@
                      <% } else { %>
                         <br> Description: <%=post.getDescription()%></p>
                     <% } %>
+<<<<<<< HEAD
                 
                     <input type="submit" value="I am interested" class="btn btn-success"  data-toggle="modal" type="submit"
                     data-container="body" data-toggle="popover" data-placement="bottom" 
@@ -192,8 +189,22 @@
                     });
                     </script>
                 
+=======
+                <% 
+                    String recipient = "karyotakisg@gmail.com";
+                    if (user != null) {
+                    String body = "His fullname is " + user.getFirstname() + " " + user.getLastname() + " and username " + user.getUsername() +
+                        " Phone: " + user.getPhone() + " Email: " + user.getEmail();
+>>>>>>> 3e1bbf0bdc1a8f54e5353c08271216aba48defed
                     
-                </div>
+                    %>
+                    <form action="findapetController.jsp" method="post">
+                        <input type="hidden" name="body" value="<%= body %>">
+                        <input type="hidden" name="recipient" value="<%= recipient %>">
+                        <button type="submit" class="btn btn-success"
+                            data-container="body"  data-placement="bottom" 
+                            data-content="Are you sure for your interesting?">I am interested!</button>
+                </form>
             </div>
             </div>
         </div>
