@@ -127,8 +127,17 @@
     
 
     <!-- Info of pet -->
+    <% 
+        String recipient = userofpost.getEmail();
+        if (user != null) {
+        String body = String.format("His/Her fullname is %s %s and his/her is username %s\nMore details\nLocation: %s\nPhone: %s\nEmail: %s",
+        user.getFirstname(), user.getLastname(), user.getUsername(),
+        user.getLocation(), user.getPhone(), user.getEmail());
+        
+    %>
     <form method="POST" action="findapetController.jsp" class="modal fade" id="cardModal<%=count%>" tabindex="-1" role="dialog" aria-labelledby="cardModal1Label" aria-hidden="true">
-        <input type="hidden" name="recipient" value="<%=userofpost.getEmail()%>"/>
+        <input type="hidden" name="body" value="<%= body %>">
+        <input type="hidden" name="recipient" value="<%= recipient %>">
         <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -177,34 +186,11 @@
                      <% } else { %>
                         <br> Description: <%=post.getDescription()%></p>
                     <% } %>
-<<<<<<< HEAD
-                
-                    <input type="submit" value="I am interested" class="btn btn-success"  data-toggle="modal" type="submit"
-                    data-container="body" data-toggle="popover" data-placement="bottom" 
-                    data-content="Are you sure for your interesting?">
-                    <!-- Initialize popover component -->
-                    <script>
-                    $(document).ready(function(){
-                        $('[data-toggle="popover"]').popover();
-                    });
-                    </script>
-                
-=======
-                <% 
-                    String recipient = "karyotakisg@gmail.com";
-                    if (user != null) {
-                    String body = "His fullname is " + user.getFirstname() + " " + user.getLastname() + " and username " + user.getUsername() +
-                        " Phone: " + user.getPhone() + " Email: " + user.getEmail();
->>>>>>> 3e1bbf0bdc1a8f54e5353c08271216aba48defed
-                    
-                    %>
-                    <form action="findapetController.jsp" method="post">
-                        <input type="hidden" name="body" value="<%= body %>">
-                        <input type="hidden" name="recipient" value="<%= recipient %>">
                         <button type="submit" class="btn btn-success"
                             data-container="body"  data-placement="bottom" 
-                            data-content="Are you sure for your interesting?">I am interested!</button>
-                </form>
+                            data-content="Are you sure for your interesting?">I am interested!
+                        </button>
+                    </div>
             </div>
             </div>
         </div>
