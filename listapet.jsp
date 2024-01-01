@@ -120,8 +120,7 @@
                                                         <select class="custom-select"
                                                             id="priceUnit" required>
                                                             <option value="day">Per Day</option>
-                                                            <option value="week">Per
-                                                                Week</option>
+                                                            
                                                         </select>
                                                     </div>
                                                 </div>
