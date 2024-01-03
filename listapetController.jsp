@@ -16,8 +16,10 @@ if (stayHome == null){
 
 java.time.LocalDate currentDate = java.time.LocalDate.now();
 java.sql.Date uploadDate = java.sql.Date.valueOf(currentDate);
-java.sql.Date startDate = java.sql.Date.valueOf(request.getParameter("start"));
-java.sql.Date endDate = java.sql.Date.valueOf(request.getParameter("end"));
+String stringStart = request.getParameter("start");
+java.sql.Date startDate = java.sql.Date.valueOf(stringStart);
+String stringEnd=request.getParameter("end");
+java.sql.Date endDate = java.sql.Date.valueOf(stringEnd);
 String description = request.getParameter("description");
 int price = Integer.parseInt(request.getParameter("price"));
 String name = request.getParameter("petName");
