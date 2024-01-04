@@ -62,7 +62,7 @@ if (number.length() != 10) {
         }catch (Exception e) {
     
 
-            request.setAttribute("message", (String) e.getMessage()); 
+            request.setAttribute("message", "Sorry, username or email already registered"); 
             %>
             <jsp:forward page="register.jsp" />
             <%
