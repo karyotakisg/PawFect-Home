@@ -158,7 +158,7 @@ public class UserDAO    {
 			ResultSet resultSet = checkIfExistsStmt.executeQuery();
 
 			if (resultSet.next()) {
-				throw new Exception();
+				throw new Exception("Sorry, username or email already registered" );
 
 			} else {
 				//set values to all parameters
@@ -181,7 +181,7 @@ public class UserDAO    {
 
             } catch (Exception e) {
 
-				throw new Exception("Sorry, username or email already registered" + e.getMessage());
+				throw new Exception(e.getMessage());
 
             } finally {
 
