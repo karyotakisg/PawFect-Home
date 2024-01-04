@@ -38,6 +38,8 @@ public class Mail {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
             message.setSubject(subject,"UTF-8");
             message.setText(body, "text/html; charset=UTF-8");
+            message.setContent(body, "text/html; charset=UTF-8");
+            Transport.send(message);
             Transport.send(message);
         } catch (MessagingException e) {
             e.printStackTrace();

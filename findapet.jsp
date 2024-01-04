@@ -130,7 +130,7 @@
     <% 
         String recipient = userofpost.getEmail();
         if (user != null) {
-        String body = String.format("His/Her fullname is %s %s and his/her is username %s\nMore details\nLocation: %s\nPhone: %s\nEmail: %s",
+        String body = String.format("His/Her fullname is %s %s and his/her username is %s\nMore details\nLocation: %s\nPhone: %s\nEmail: %s",
         user.getFirstname(), user.getLastname(), user.getUsername(),
         user.getLocation(), user.getPhone(), user.getEmail());
         
@@ -220,6 +220,7 @@
 <div>
 <hr style="border: none; background-color: #49392d;">
 </div>
+
 <%@ include file="footer.jsp" %>  
 
 
