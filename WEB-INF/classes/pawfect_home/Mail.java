@@ -33,11 +33,11 @@ public class Mail {
         });
 
         try {
-            Message message = new MimeMessage(session);
+            MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(sender));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
-            message.setSubject(subject);
-            message.setText(body);
+            message.setSubject(subject,"UTF-8");
+            message.setText(body, "text/html; charset=UTF-8");
             Transport.send(message);
         } catch (MessagingException e) {
             e.printStackTrace();
