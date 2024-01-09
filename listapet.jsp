@@ -4,6 +4,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Pet Sharing Platform</title>
         <!-- Include Bootstrap CSS -->
         
@@ -43,22 +44,21 @@
                     You must be registered to sumbit your listing!
                     </div>
                 <% } %>
-                    <div class="row">
-                        <div class="col-md-8 offset-md-2">
-                            <div class="card">
-                                <div class="card-body">
+                            
+                <div class="card">
+                    <div class="card-body">
                                     <h2 class="card-title text-center">List Your Pet
                                         &#x2764;</h2>
                                     <form action="listapetController.jsp" method="post" accept-charset="UTF-8" >
                                         <div class="form-row justify-content-between">
-                                            <div class="form-group col-md-5">
+                                            <div class="form-group col-12 col-md-5">
                                                 <label for="petName">Pet Name</label>
                                                 <input type="text" class="form-control"
                                                     id="petName"  name="petName"
                                                     placeholder="Enter Pet's Name"
                                                     required>
                                             </div>
-                                            <div class="form-group col-md-5">
+                                            <div class="form-group col-12 col-md-5">
                                                 <label for="petType">Animal</label>
                                                 <input type="text" class="form-control"
                                                     id="petType" placeholder="e.g. Cat" name="animal"
@@ -66,13 +66,13 @@
                                             </div>
                                         </div>
                                         <div class="form-row justify-content-between">
-                                            <div class="form-group col-md-5">
+                                            <div class="form-group col-12 col-md-5">
                                                 <label for="petBreed">Breed (optional)</label>
                                                 <input type="text" class="form-control"
                                                     id="petBreed" name="breed"
                                                     placeholder="Enter Breed">
                                             </div>
-                                            <div class="form-group col-md-5">
+                                            <div class="form-group col-12 col-md-5">
                                                 <label for="petSize">Size</label>
                                                 <input type="number" class="form-control"
                                                     id="petSize" name="petSize"
@@ -110,17 +110,15 @@
                                                 });
                                             </script>
 
-                                            <div class="form-group col-md-5">
+                                            <div class="form-group col-12 col-md-5">
                                                 <label >Reward</label>
                                                 <div class="input-group" >
-                                                    <input type="number" name="price"
-                                                        class="form-control" required>
+                                                    <input type="number" name="price" required>
                                                     <span class="input-group-text">€</span>
                                                     <div class="input-group-append">
                                                         <select class="custom-select"
                                                             id="priceUnit" required>
                                                             <option value="day">Per Day</option>
-                                                            
                                                         </select>
                                                     </div>
                                                 </div>
@@ -155,10 +153,9 @@
                             </div>
                         </form>
                                     
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                </div>
+                        
                    
                  
                 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
