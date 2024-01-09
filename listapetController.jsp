@@ -51,12 +51,12 @@ if (errorMessages.size() > 0) {
     <%
 } else{
     
-   // Listing listing = new Listing(uploadDate, stayAtOwner, startDate, endDate, price, description, username);
-   // ListingDAO listingdao = new ListingDAO();
-   // f_key = listingdao.createListing(listing); 
-   // Pet pet = new Pet(name, animal, breed, size, imageUrl);
-   // PetDAO petdao = new PetDAO();
-   // petdao.createPet(pet, f_key);
+    Listing listing = new Listing(uploadDate, stayAtOwner, startDate, endDate, price, description, username);
+    ListingDAO listingdao = new ListingDAO();
+    f_key = listingdao.createListing(listing); 
+    Pet pet = new Pet(name, animal, breed, size, imageUrl);
+    PetDAO petdao = new PetDAO();
+    petdao.createPet(pet, f_key);
     %>
 
 
