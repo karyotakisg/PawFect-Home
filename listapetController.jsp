@@ -31,9 +31,13 @@ String username = user.getUsername();
 String imageUrl = request.getParameter("imageUrl");
 int f_key = 0;
 int comparison = startDate.compareTo(endDate);
+int validRangeofDates = startDate.compareTo(uploadDate);
 List<String> errorMessages = new ArrayList<String>();
 if (comparison > 0) {
     errorMessages.add("Start date must be before end date");
+}
+if (validRangeofDates<0){
+    errorMessages.add("Start date must be valid");
 }
 if(size <= 0){
     errorMessages.add("Pet size must be bigger than zero");
