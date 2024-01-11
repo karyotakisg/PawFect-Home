@@ -43,7 +43,7 @@ if(size <= 0){
     errorMessages.add("Pet size must be bigger than zero");
 }
 if (price < 0) {
-    errorMessages.add("Price must be bigger than zero");
+    errorMessages.add("Price must be bigger or equal to zero");
 }
 if (name.length() <= 1) {
     errorMessages.add("Pet Name cannot be one letter");
