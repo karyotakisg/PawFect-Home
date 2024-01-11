@@ -50,7 +50,7 @@ if (password == null || password.length() < 4) {
 
 if (number.length() != 10) {
     hasErrors = true;
-    errors.add("Number phone must have 10 digits");
+    errors.add("Phone number must have 10 digits");
 }
 %>
 
