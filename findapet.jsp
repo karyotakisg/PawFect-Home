@@ -46,14 +46,16 @@
     %>
     <div class="text-center">
         <div class="alert alert-warning d-inline-block" role="alert" style="border-radius: 1rem; margin-top: 10px;">
-            You must be registered to see more info for the pets!
+            You must be registered to declare your interest a pet!
         </div>
     </div>
-    <% } else { %>
+    <% } %>
 
 
     <!--Group Card-->
     <%
+    
+    
     ListingDAO listingd = new ListingDAO();
     List<Listing> listoflistings = listingd.getListings();
     if (listoflistings.isEmpty()) { %>
@@ -80,7 +82,9 @@
             break;
         } else {
     %>
-    <% if (!(userofpost.getUsername().equals(user.getUsername()))) { 
+    <% 
+    
+    if (user == null || !(userofpost.getUsername().equals(user.getUsername()))) { 
       numberpost++;
     %>
     <!-- Post of pet -->
@@ -113,11 +117,8 @@
                                 <p><small>Uploaded at <%=post.getUpload_date() %></small></p>
                             </div>
                         </div>
-                         <% if (user != null) { %>
+                          
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cardModal<%=count%>">See More</button>
-                            <% } else { %>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cardModal<%=count%>" disabled>See More</button>
-                            <% } %>
                     </div>
                 </div>
             </div>
@@ -129,11 +130,13 @@
     <!-- Info of pet -->
     <% 
         String recipient = userofpost.getEmail();
+        String body = "";
         if (user != null) {
-        String body = String.format("His/Her fullname is %s %s and his/her username is %s\nMore details\nLocation: %s\nPhone: %s\nEmail: %s",
-        user.getFirstname(), user.getLastname(), user.getUsername(),
+        body = String.format("Dear %s, \n\nThere is someone who has been interested for your pet.\nMore details\nFirst Name: %s\nLast Name: %s\n" +
+        "Location: %s\nPhone: %s\nEmail: %s\n\nPlease contact with him/her for more details.",
+        userofpost.getLastname(), user.getFirstname(), user.getLastname(),
         user.getLocation(), user.getPhone(), user.getEmail());
-        
+        }
     %>
     <form method="POST" action="findapetController.jsp" class="modal fade" id="cardModal<%=count%>" tabindex="-1" role="dialog" aria-labelledby="cardModal1Label" aria-hidden="true">
         <input type="hidden" name="body" value="<%= body %>">
@@ -185,11 +188,23 @@
                         <br> Description: None</p>
                      <% } else { %>
                         <br> Description: <%=post.getDescription()%></p>
-                    <% } %>
+                    <% }
+                    if (user == null) { 
+                    %>
+                        <div class="col-md-6">
+                        <p class="danger-text" style="color: gray; font-size: smaller;">**You can not declare your interested as quest. Please sign in or login.**
+                         </div>
+                    <%
+                    } else {
+                    %>
                         <button type="submit" class="btn btn-success"
                             data-container="body"  data-placement="bottom" 
                             data-content="Are you sure for your interesting?">I am interested!
                         </button>
+                        
+                    <%
+                    }
+                     %>   
                     </div>
             </div>
             </div>
@@ -202,12 +217,13 @@
 
     <% }
     }
-    } 
-    }   %>
+     
+    
+       %>
 
 
 </div>
-<% if (numberpost == 0 && user != null) { %>
+<% if (numberpost == 0) { %>
     <div class="text-center">
     <div class="alert alert-warning d-inline-block" role="alert" style="border-radius: 1rem; margin-top: 10px;">
         At this moment there is no pets to care from other owners.<br> Please try again later :)
