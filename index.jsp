@@ -13,6 +13,38 @@
        <%@ include file= "navbar.jsp" %>
     </header>
 
+    <%
+	    if (request.getAttribute("successfulRegistration") != null) {
+    %>
+    <div class="container text-center">
+            <div class="alert alert-success">
+                <%=(String)request.getAttribute("successfulRegistration") %>
+            </div>
+    </div>
+    <%  }   %>
+
+    <%
+	    if (request.getAttribute("successLogin") != null) {
+    %>
+    <div class="container text-center">
+            <div class="alert alert-success">
+                <%=(String)request.getAttribute("successLogin") %>
+            </div>
+    </div>
+
+    <%  }    %>
+
+    <%
+	    if (request.getAttribute("successLogout") != null) {
+    %>
+    <div class="container text-center">
+            <div class="alert alert-success">
+                <%=(String)request.getAttribute("successLogout") %>
+            </div>
+    </div>
+
+    <%  }    %>
+
     <main>
         <section id="home" class="welcome-section">
             <div class="welcome-text">

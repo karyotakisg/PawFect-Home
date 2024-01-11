@@ -11,6 +11,19 @@ String location = request.getParameter("location");
 String email = request.getParameter("email");
 String number = request.getParameter("phone");
 long phone = Long.parseLong(number);
+
+if (firstname != null) {
+    firstname = new String(firstname.getBytes("ISO-8859-1"), "UTF-8");
+}
+
+if (surname != null) {
+    surname = new String(surname.getBytes("ISO-8859-1"), "UTF-8");
+}
+
+if (location != null) {
+    location = new String(location.getBytes("ISO-8859-1"), "UTF-8");
+}
+
 List<String> errors = new ArrayList<String>();
 boolean hasErrors = false;
 String messageofErrors;
@@ -37,7 +50,7 @@ if (password == null || password.length() < 4) {
 
 if (number.length() != 10) {
     hasErrors = true;
-    errors.add("Number phone must be 10 number long");
+    errors.add("Number phone must have 10 digits");
 }
 %>
 
@@ -57,7 +70,8 @@ if (number.length() != 10) {
 
             session.setAttribute("userCookie",user);
 
-            response.sendRedirect("index.jsp");
+            request.setAttribute("successfulRegistration", "Signed up successfully!");  %>
+            <jsp:forward page="index.jsp" />
 
         }catch (Exception e) {
     
