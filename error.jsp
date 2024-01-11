@@ -3,6 +3,7 @@
 
 <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Pet Sharing Platform</title>
         <!-- Include Bootstrap CSS -->
         <link rel="stylesheet"
@@ -56,9 +57,14 @@
 		    <div class="page-header">
 			    <h1>Oops something went wrong</h1>
 		    </div>
-        
+        <style>
+            .centered {
+              position: fixed;
+              top: 40%;
+            }
+        </style>
             <div class="row">
-			    <div class="col-xs-12">
+			    <div class="col-10 offset-1 col-md-4 offset-md-2 centered">
 			    	<h2>Description</h2>
 			    	<% if(exception != null) { %>	                  	
 			    		<p><code><%=exception %></code></p>						
