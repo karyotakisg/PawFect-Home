@@ -132,11 +132,10 @@
         String recipient = userofpost.getEmail();
         String body = "";
         if (user != null) {
-        body = String.format("Dear %s, \n\nThere is someone who has been interested for your pet.\nMore details\nFirst Name: %s\nLast Name: %s\n" +
-        "Location: %s\nPhone: %s\nEmail: %s\n\nPlease contact with him/her for more details.",
-        userofpost.getLastname(), user.getFirstname(), user.getLastname(),
-        user.getLocation(), user.getPhone(), user.getEmail());
-        }
+        String body = String.format("<html><body>His/Her fullname is %s %s and his/her username is %s<br>More details<br>Location: %s<br>Phone: %s<br>Email: %s</body></html>",
+            user.getFirstname(), user.getLastname(), user.getUsername(),
+            user.getLocation(), user.getPhone(), user.getEmail());
+        
     %>
     <form method="POST" action="findapetController.jsp" class="modal fade" id="cardModal<%=count%>" tabindex="-1" role="dialog" aria-labelledby="cardModal1Label" aria-hidden="true">
         <input type="hidden" name="body" value="<%= body %>">
