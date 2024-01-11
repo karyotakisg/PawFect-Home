@@ -46,14 +46,16 @@
     %>
     <div class="text-center">
         <div class="alert alert-warning d-inline-block" role="alert" style="border-radius: 1rem; margin-top: 10px;">
-            You must be registered to see more info for the pets!
+            You must be registered to declare your interest a pet!
         </div>
     </div>
-    <% } else { %>
+    <% } %>
 
 
     <!--Group Card-->
     <%
+    
+    
     ListingDAO listingd = new ListingDAO();
     List<Listing> listoflistings = listingd.getListings();
     if (listoflistings.isEmpty()) { %>
@@ -80,7 +82,9 @@
             break;
         } else {
     %>
-    <% if (!(userofpost.getUsername().equals(user.getUsername()))) { 
+    <% 
+    
+    if (user == null || !(userofpost.getUsername().equals(user.getUsername()))) { 
       numberpost++;
     %>
     <!-- Post of pet -->
@@ -113,11 +117,8 @@
                                 <p><small>Uploaded at <%=post.getUpload_date() %></small></p>
                             </div>
                         </div>
-                         <% if (user != null) { %>
+                          
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cardModal<%=count%>">See More</button>
-                            <% } else { %>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cardModal<%=count%>" disabled>See More</button>
-                            <% } %>
                     </div>
                 </div>
             </div>
@@ -129,6 +130,7 @@
     <!-- Info of pet -->
     <% 
         String recipient = userofpost.getEmail();
+        String body = "";
         if (user != null) {
         String body = String.format("<html><body>His/Her fullname is %s %s and his/her username is %s<br>More details<br>Location: %s<br>Phone: %s<br>Email: %s</body></html>",
             user.getFirstname(), user.getLastname(), user.getUsername(),
@@ -185,11 +187,23 @@
                         <br> Description: None</p>
                      <% } else { %>
                         <br> Description: <%=post.getDescription()%></p>
-                    <% } %>
+                    <% }
+                    if (user == null) { 
+                    %>
+                        <div class="col-md-6">
+                        <p class="danger-text" style="color: gray; font-size: smaller;">**You can not declare your interested as quest. Please sign in or login.**
+                         </div>
+                    <%
+                    } else {
+                    %>
                         <button type="submit" class="btn btn-success"
                             data-container="body"  data-placement="bottom" 
                             data-content="Are you sure for your interesting?">I am interested!
                         </button>
+                        
+                    <%
+                    }
+                     %>   
                     </div>
             </div>
             </div>
@@ -202,12 +216,13 @@
 
     <% }
     }
-    } 
-    }   %>
+     
+    
+       %>
 
 
 </div>
-<% if (numberpost == 0 && user != null) { %>
+<% if (numberpost == 0) { %>
     <div class="text-center">
     <div class="alert alert-warning d-inline-block" role="alert" style="border-radius: 1rem; margin-top: 10px;">
         At this moment there is no pets to care from other owners.<br> Please try again later :)
