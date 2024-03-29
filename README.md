@@ -10,14 +10,24 @@ Our services include short-term pet adoptions and pet-sitting arrangements to en
  1. Post listings about pets that need to find a pet-sitter
  2. Find listings about pets  available for pet-sitting
 
- **Screenshots**
+ ## Screenshots & User Stories
 
- ![HomePage](screenshots/homepage.png)
-*The homepage of our app*
+### 1.Homepage
+ ![HomePage](screenshots/home.png)
+<div style="text-align:right"><i>That's the landing page</i></div>
+
+
+### 2.Login
 ![LoginPage](screenshots/login.png)
-*Interface of the login*
+<div style="text-align:right"><i>You can login to obtain post and "i'm interested" permissions</i></div>
+
+
+### 3.Post about your pet
 ![List a pet](screenshots/listapet.png)
-*Interface to post the listing about your pet*
+<div style="text-align:right"><i>Create a post to attract pet-sitters!</i></div>
+
+
+### 4. Find a pet to take care of
 ![Find a pet](screenshots/findapet.png)
-*Interface to find a pet to take care*
+<div style="text-align:right"><i>Find a pet that you want to have fun with</i></div>
 
